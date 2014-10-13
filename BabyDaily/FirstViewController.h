@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstViewController : UIViewController
-- (IBAction)goToNext:(id)sender;
+//- (IBAction)goToNext:(id)sender;
+//@property (weak, nonatomic) IBOutlet UILabel *testText;
 
 @end
 
