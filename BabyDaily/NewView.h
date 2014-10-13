@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  NewView.h
 //  BabyDaily
 //
 //  Created by Ctrip on 14-10-13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-- (IBAction)goToNext:(id)sender;
+@interface NewView : UIViewController
 
 @end
-

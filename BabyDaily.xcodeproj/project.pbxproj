@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D088541219EBDE8C0007B3B0 /* NewView.m in Sources */ = {isa = PBXBuildFile; fileRef = D088541119EBDE8C0007B3B0 /* NewView.m */; };
 		D09130F519EBDAEF0086C423 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130F419EBDAEF0086C423 /* main.m */; };
 		D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130F719EBDAEF0086C423 /* AppDelegate.m */; };
 		D09130FB19EBDAEF0086C423 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130FA19EBDAEF0086C423 /* FirstViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D088541019EBDE8C0007B3B0 /* NewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewView.h; sourceTree = "<group>"; };
+		D088541119EBDE8C0007B3B0 /* NewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewView.m; sourceTree = "<group>"; };
 		D09130EF19EBDAEF0086C423 /* BabyDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09130F319EBDAEF0086C423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09130F419EBDAEF0086C423 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				D091310219EBDAEF0086C423 /* Images.xcassets */,
 				D091310419EBDAEF0086C423 /* LaunchScreen.xib */,
 				D09130F219EBDAEF0086C423 /* Supporting Files */,
+				D088541019EBDE8C0007B3B0 /* NewView.h */,
+				D088541119EBDE8C0007B3B0 /* NewView.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D088541219EBDE8C0007B3B0 /* NewView.m in Sources */,
 				D09130FE19EBDAEF0086C423 /* SecondViewController.m in Sources */,
 				D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */,
 				D09130FB19EBDAEF0086C423 /* FirstViewController.m in Sources */,
@@ -418,6 +424,7 @@
 				D091311719EBDAEF0086C423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D091311819EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "BabyDailyTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				D091311A19EBDAEF0086C423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
