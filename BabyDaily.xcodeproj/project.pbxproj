@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
+		D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D071448819ECED05001AD540 /* UIImage+UzysExtension.m */; };
+		D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D071448A19ECED05001AD540 /* UzysAppearanceConfig.m */; };
+		D071449A19ECED05001AD540 /* UzysAssetPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D071448B19ECED05001AD540 /* UzysAssetPickerController.bundle */; };
+		D071449B19ECED05001AD540 /* UzysAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D071448E19ECED05001AD540 /* UzysAssetsPickerController.m */; };
+		D071449C19ECED05001AD540 /* UzysAssetsPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D071448F19ECED05001AD540 /* UzysAssetsPickerController.xib */; };
+		D071449D19ECED05001AD540 /* UzysAssetsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D071449119ECED05001AD540 /* UzysAssetsViewCell.m */; };
+		D071449E19ECED05001AD540 /* UzysGroupPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D071449319ECED05001AD540 /* UzysGroupPickerView.m */; };
+		D071449F19ECED05001AD540 /* UzysGroupViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D071449519ECED05001AD540 /* UzysGroupViewCell.m */; };
+		D07144A019ECED05001AD540 /* UzysWrapperPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D071449719ECED05001AD540 /* UzysWrapperPickerController.m */; };
+		D07144A719ECFF9B001AD540 /* Daily.m in Sources */ = {isa = PBXBuildFile; fileRef = D07144A619ECFF9B001AD540 /* Daily.m */; };
+		D07144B119ED00E5001AD540 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D07144B019ED00E5001AD540 /* libc++.dylib */; };
+		D07144B219ED017C001AD540 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07144AD19ED0083001AD540 /* Realm.framework */; };
 		D09130F519EBDAEF0086C423 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130F419EBDAEF0086C423 /* main.m */; };
 		D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130F719EBDAEF0086C423 /* AppDelegate.m */; };
 		D09130FB19EBDAEF0086C423 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09130FA19EBDAEF0086C423 /* FirstViewController.m */; };
@@ -31,6 +43,27 @@
 /* Begin PBXFileReference section */
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
+		D071448719ECED05001AD540 /* UIImage+UzysExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UzysExtension.h"; sourceTree = "<group>"; };
+		D071448819ECED05001AD540 /* UIImage+UzysExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UzysExtension.m"; sourceTree = "<group>"; };
+		D071448919ECED05001AD540 /* UzysAppearanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysAppearanceConfig.h; sourceTree = "<group>"; };
+		D071448A19ECED05001AD540 /* UzysAppearanceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysAppearanceConfig.m; sourceTree = "<group>"; };
+		D071448B19ECED05001AD540 /* UzysAssetPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UzysAssetPickerController.bundle; sourceTree = "<group>"; };
+		D071448C19ECED05001AD540 /* UzysAssetsPickerController_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysAssetsPickerController_Configuration.h; sourceTree = "<group>"; };
+		D071448D19ECED05001AD540 /* UzysAssetsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysAssetsPickerController.h; sourceTree = "<group>"; };
+		D071448E19ECED05001AD540 /* UzysAssetsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysAssetsPickerController.m; sourceTree = "<group>"; };
+		D071448F19ECED05001AD540 /* UzysAssetsPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UzysAssetsPickerController.xib; sourceTree = "<group>"; };
+		D071449019ECED05001AD540 /* UzysAssetsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysAssetsViewCell.h; sourceTree = "<group>"; };
+		D071449119ECED05001AD540 /* UzysAssetsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysAssetsViewCell.m; sourceTree = "<group>"; };
+		D071449219ECED05001AD540 /* UzysGroupPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysGroupPickerView.h; sourceTree = "<group>"; };
+		D071449319ECED05001AD540 /* UzysGroupPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysGroupPickerView.m; sourceTree = "<group>"; };
+		D071449419ECED05001AD540 /* UzysGroupViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysGroupViewCell.h; sourceTree = "<group>"; };
+		D071449519ECED05001AD540 /* UzysGroupViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysGroupViewCell.m; sourceTree = "<group>"; };
+		D071449619ECED05001AD540 /* UzysWrapperPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysWrapperPickerController.h; sourceTree = "<group>"; };
+		D071449719ECED05001AD540 /* UzysWrapperPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysWrapperPickerController.m; sourceTree = "<group>"; };
+		D07144A519ECFF9B001AD540 /* Daily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Daily.h; sourceTree = "<group>"; };
+		D07144A619ECFF9B001AD540 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Daily.m; sourceTree = "<group>"; };
+		D07144AD19ED0083001AD540 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		D07144B019ED00E5001AD540 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		D09130EF19EBDAEF0086C423 /* BabyDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09130F319EBDAEF0086C423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09130F419EBDAEF0086C423 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07144B219ED017C001AD540 /* Realm.framework in Frameworks */,
+				D07144B119ED00E5001AD540 /* libc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +101,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D071448619ECECEF001AD540 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D071448719ECED05001AD540 /* UIImage+UzysExtension.h */,
+				D071448819ECED05001AD540 /* UIImage+UzysExtension.m */,
+				D071448919ECED05001AD540 /* UzysAppearanceConfig.h */,
+				D071448A19ECED05001AD540 /* UzysAppearanceConfig.m */,
+				D071448B19ECED05001AD540 /* UzysAssetPickerController.bundle */,
+				D071448C19ECED05001AD540 /* UzysAssetsPickerController_Configuration.h */,
+				D071448D19ECED05001AD540 /* UzysAssetsPickerController.h */,
+				D071448E19ECED05001AD540 /* UzysAssetsPickerController.m */,
+				D071448F19ECED05001AD540 /* UzysAssetsPickerController.xib */,
+				D071449019ECED05001AD540 /* UzysAssetsViewCell.h */,
+				D071449119ECED05001AD540 /* UzysAssetsViewCell.m */,
+				D071449219ECED05001AD540 /* UzysGroupPickerView.h */,
+				D071449319ECED05001AD540 /* UzysGroupPickerView.m */,
+				D071449419ECED05001AD540 /* UzysGroupViewCell.h */,
+				D071449519ECED05001AD540 /* UzysGroupViewCell.m */,
+				D071449619ECED05001AD540 /* UzysWrapperPickerController.h */,
+				D071449719ECED05001AD540 /* UzysWrapperPickerController.m */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		D07144A419ECFF5D001AD540 /* EntityClass */ = {
+			isa = PBXGroup;
+			children = (
+				D07144A519ECFF9B001AD540 /* Daily.h */,
+				D07144A619ECFF9B001AD540 /* Daily.m */,
+			);
+			path = EntityClass;
+			sourceTree = "<group>";
+		};
+		D07144A819ECFFD1001AD540 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D07144B019ED00E5001AD540 /* libc++.dylib */,
+				D07144AD19ED0083001AD540 /* Realm.framework */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		D09130E619EBDAEF0086C423 = {
 			isa = PBXGroup;
 			children = (
+				D07144A819ECFFD1001AD540 /* Realm */,
+				D07144A419ECFF5D001AD540 /* EntityClass */,
+				D071448619ECECEF001AD540 /* ImagePicker */,
 				D09130F119EBDAEF0086C423 /* BabyDaily */,
 				D091310E19EBDAEF0086C423 /* BabyDailyTests */,
 				D09130F019EBDAEF0086C423 /* Products */,
@@ -211,6 +291,8 @@
 			files = (
 				D091310119EBDAEF0086C423 /* Main.storyboard in Resources */,
 				D091310619EBDAEF0086C423 /* LaunchScreen.xib in Resources */,
+				D071449C19ECED05001AD540 /* UzysAssetsPickerController.xib in Resources */,
+				D071449A19ECED05001AD540 /* UzysAssetPickerController.bundle in Resources */,
 				D091310319EBDAEF0086C423 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,10 +312,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09130FE19EBDAEF0086C423 /* SecondViewController.m in Sources */,
+				D071449D19ECED05001AD540 /* UzysAssetsViewCell.m in Sources */,
 				D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */,
+				D07144A719ECFF9B001AD540 /* Daily.m in Sources */,
 				D09130FB19EBDAEF0086C423 /* FirstViewController.m in Sources */,
 				9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */,
+				D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */,
+				D07144A019ECED05001AD540 /* UzysWrapperPickerController.m in Sources */,
 				D09130F519EBDAEF0086C423 /* main.m in Sources */,
+				D071449E19ECED05001AD540 /* UzysGroupPickerView.m in Sources */,
+				D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */,
+				D071449F19ECED05001AD540 /* UzysGroupViewCell.m in Sources */,
+				D071449B19ECED05001AD540 /* UzysAssetsPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +445,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Realm",
+				);
 				INFOPLIST_FILE = BabyDaily/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -365,7 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Realm",
+				);
 				INFOPLIST_FILE = BabyDaily/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

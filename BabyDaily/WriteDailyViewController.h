@@ -10,5 +10,10 @@
 
 @interface WriteDailyViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *DText;
+@property (weak, nonatomic) IBOutlet UIButton *AddImgBtn;
+- (IBAction)AddImg:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *upLoadImg;
+- (IBAction)SaveDaily:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *DailyBody;
 @property(nonatomic,weak)NSString *strTtile;
 @end

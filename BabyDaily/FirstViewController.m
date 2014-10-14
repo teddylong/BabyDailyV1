@@ -10,7 +10,7 @@
 #import "WriteDailyViewController.h"
 
 @interface FirstViewController ()
-
+@property (nonatomic, assign) BOOL shouldFixAnimation;
 
 @end
 
@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,10 +27,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (IBAction)goToNext:(id)sender {
-    //WriteDailyViewController *temp = [[WriteDailyViewController alloc] init];
-    //temp.DText.text = self.testText.text;
-//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -38,5 +35,9 @@
         id theSegue = segue.destinationViewController;
         [theSegue setValue:@"这里是要传递的值" forKey:@"strTtile"];
     }
+    self.hidesBottomBarWhenPushed = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    self.hidesBottomBarWhenPushed = NO;
 }
 @end
