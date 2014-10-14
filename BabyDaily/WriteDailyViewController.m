@@ -71,12 +71,16 @@
     Daily *d = [[Daily alloc] init];
     
     d.User = @"Teddy";
-    //d.CreateDate = [NSDate date];
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterFullStyle];
+    d.CreateDate = dateString;
     d.Body = @"asd";
     
     NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
-    //d.Image = imageData;
-    
+    NSString *testString = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+    d.Image = testString;
+
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     

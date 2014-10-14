@@ -12,11 +12,11 @@
 @interface Daily : RLMObject
 
 //@property NSString *ID;
-//@property NSDate *CreateDate;
+@property NSString *CreateDate;
 @property NSString *User;
 @property NSString *Body;
 //@property NSString *Weather;
-//@property NSData *Image;
+@property NSString *Image;
 //@property NSString *Location;
 //@property NSDate *UpdateDate;
 //@property NSString *Tag;
