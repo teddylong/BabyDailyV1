@@ -9,7 +9,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "WriteDailyViewController.h"
 #import "UzysAssetsPickerController.h"
-#import "Daily.h"
+#import "DailyOne.h"
 
 
 @interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate>
@@ -68,7 +68,7 @@
 
 - (IBAction)SaveDaily:(id)sender {
     
-    Daily *d = [[Daily alloc] init];
+    DailyOne *d = [[DailyOne alloc] init];
     
     d.User = @"Teddy";
     NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
@@ -79,7 +79,7 @@
     
     NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
     NSString *testString = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
-    d.Image = testString;
+    d.Image = @"";
 
     RLMRealm *realm = [RLMRealm defaultRealm];
     

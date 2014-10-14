@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
+		D027E9B319ED29D0007A3EB9 /* DailyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D027E9B219ED29D0007A3EB9 /* DailyOne.m */; };
 		D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D071448819ECED05001AD540 /* UIImage+UzysExtension.m */; };
 		D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D071448A19ECED05001AD540 /* UzysAppearanceConfig.m */; };
 		D071449A19ECED05001AD540 /* UzysAssetPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D071448B19ECED05001AD540 /* UzysAssetPickerController.bundle */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
+		D027E9B119ED29D0007A3EB9 /* DailyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyOne.h; sourceTree = "<group>"; };
+		D027E9B219ED29D0007A3EB9 /* DailyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyOne.m; sourceTree = "<group>"; };
 		D071448719ECED05001AD540 /* UIImage+UzysExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UzysExtension.h"; sourceTree = "<group>"; };
 		D071448819ECED05001AD540 /* UIImage+UzysExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UzysExtension.m"; sourceTree = "<group>"; };
 		D071448919ECED05001AD540 /* UzysAppearanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysAppearanceConfig.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 			children = (
 				D07144A519ECFF9B001AD540 /* Daily.h */,
 				D07144A619ECFF9B001AD540 /* Daily.m */,
+				D027E9B119ED29D0007A3EB9 /* DailyOne.h */,
+				D027E9B219ED29D0007A3EB9 /* DailyOne.m */,
 			);
 			path = EntityClass;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				D071449E19ECED05001AD540 /* UzysGroupPickerView.m in Sources */,
 				D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */,
 				D071449F19ECED05001AD540 /* UzysGroupViewCell.m in Sources */,
+				D027E9B319ED29D0007A3EB9 /* DailyOne.m in Sources */,
 				D071449B19ECED05001AD540 /* UzysAssetsPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
