@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 //- (IBAction)goToNext:(id)sender;
 //@property (weak, nonatomic) IBOutlet UILabel *testText;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

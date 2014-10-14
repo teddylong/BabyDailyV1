@@ -12,7 +12,11 @@
 #import "DailyOne.h"
 
 
+
 @interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate>
+
+
+
 
 @end
 
@@ -75,7 +79,7 @@
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterFullStyle];
     d.CreateDate = dateString;
-    d.Body = @"asd";
+    d.Body = self.DailyBody.text;
     
     NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
     NSString *testString = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
@@ -88,4 +92,8 @@
     [realm addObject:d];
     [realm commitWriteTransaction];
 }
+
+
+
+
 @end
