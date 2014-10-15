@@ -27,28 +27,22 @@ static NSString * const kTableName = @"table";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
     // Set realm notification block
     __weak typeof(self) weakSelf = self;
+    
     self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
         [weakSelf reloadData];
     }];
     
     [self reloadData];
-    
-//    NSString *homeDir = NSHomeDirectory();
-//    NSLog(@"path: %@",homeDir);
-
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *path = [paths objectAtIndex:0];
-//    NSLog(@"path:%@", path);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -99,8 +93,10 @@ static NSString * const kTableName = @"table";
     
     UIImageView *imageAtt = (UIImageView *)[cell.contentView viewWithTag:3];
     
-    NSData *reader = [NSData dataWithContentsOfFile:object.Image];
-    imageAtt.image = [UIImage imageWithData:reader];
+    
+    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.Image]]];
+    
+    imageAtt.image = asdasd;
     
     return cell;
 }

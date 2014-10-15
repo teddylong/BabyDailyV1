@@ -155,7 +155,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="IVD-bM-JeM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TabConfig" id="IVD-bM-JeM">
                                 <rect key="frame" x="94" y="225" width="84" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -276,6 +276,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TabConfig" width="24" height="24"/>
         <image name="TabHome" width="24" height="22"/>
         <image name="TabLook" width="24" height="24"/>
     </resources>

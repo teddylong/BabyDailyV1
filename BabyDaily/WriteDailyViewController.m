@@ -76,66 +76,49 @@
     DailyOne *d = [[DailyOne alloc] init];
     
     d.User = @"Teddy";
+    d.ID = @"1";
+    
+    
     NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterFullStyle];
     d.CreateDate = dateString;
+    d.UpdateDate = dateString;
+    d.Weather = @"Rain";
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    d.UDID = idfv;
     d.Body = self.DailyBody.text;
-    
-    //NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
-    
-//    NSDateFormatter *time = [[NSDateFormatter alloc]init];
-//    time.dateFormat = @"YYYY-MM-DD-HH-mm-ss";
-//    NSString *fileName = [[time stringFromDate:[NSDate date]] stringByAppendingString: @".png"];
-    
-
+    d.Location = @"SH";
+    d.Tag = @"";
     
     
+    NSURL *baseURL = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/"];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
     
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-//    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:fileName]];
-//    NSLog(filePath);
-    
-    
-//    BOOL result = [UIImagePNGRepresentation(self.upLoadImg.image)writeToFile: filePath    atomically:YES];
-//    if(result)
-//    {
-//        NSLog(@"Success Save PNG");
-//        
-        NSURL *baseURL = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/"];
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
-        //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
         
-        NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
-        
-        [manager POST:@"upload.php" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            [formData appendPartWithFileData:imageData name:@"uploaded" fileName:@"daily.png" mimeType:@"image/jpeg"];
+    [manager POST:@"upload.php" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"uploaded" fileName:@"daily.png" mimeType:@"image/jpeg"];
         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dic = responseObject;
-            NSString * filename = dic[@"filename"];
+            NSString * filename = dic[@"FileName"];
             NSLog(@"upload Success: %@", filename);
+            
+            NSString * mmm = [@"http://teddylong.net/BabyDaily/upload/" stringByAppendingString:filename];
+            d.Image = @"http://babydaily.oss-cn-hangzhou.aliyuncs.com/656657BA-3442-4C91-BEA6-CD844D20E826.png";
+            
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            [realm addObject:d];
+            [realm commitWriteTransaction];
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"upload Error: %@", error);  
+            NSLog(@"upload Error: %@", error);
+            d.Image = @"";
         }];
-        
-        d.Image = @"";
-//    }
-//    else
-//    {
-//        NSLog(@"Failed Save PNG");
-//        d.Image = @"";
-//    }
-
     
-
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    
-    [realm beginWriteTransaction];
-    [realm addObject:d];
-    [realm commitWriteTransaction];
 }
 
 
