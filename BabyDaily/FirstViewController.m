@@ -10,7 +10,7 @@
 #import "WriteDailyViewController.h"
 #import "DailyOne.h"
 #import <Realm/Realm.h>
-
+#import "DailyDetailViewController.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
@@ -18,6 +18,7 @@ static NSString * const kTableName = @"table";
 @interface FirstViewController ()
 
 @property (nonatomic, strong) RLMArray *array;
+@property (assign, nonatomic) NSInteger selectedRow;
 @property (nonatomic, strong) RLMNotificationToken *notification;
 
 @end
@@ -37,6 +38,12 @@ static NSString * const kTableName = @"table";
     
     [self reloadData];
     
+//    NSString *homeDir = NSHomeDirectory();
+//    NSLog(@"path: %@",homeDir);
+
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *path = [paths objectAtIndex:0];
+//    NSLog(@"path:%@", path);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,10 +54,16 @@ static NSString * const kTableName = @"table";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"goNext"]) //"goView2"是SEGUE连线的标识
+    if([segue.identifier isEqualToString:@"goNext"])
     {
         id theSegue = segue.destinationViewController;
         [theSegue setValue:@"这里是要传递的值" forKey:@"strTtile"];
+    }
+    if([segue.identifier isEqualToString:@"goDetail"])
+    {
+        DailyDetailViewController *dailyDetail = segue.destinationViewController;
+        dailyDetail.daily = self.array[_selectedRow];
+        
     }
     self.hidesBottomBarWhenPushed = YES;
 }
@@ -62,14 +75,18 @@ static NSString * const kTableName = @"table";
 {
     return self.array.count;
 }
-
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _selectedRow = [indexPath row];
+    return indexPath;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:kCellID];
+                                      reuseIdentifier:@"cell"];
     }
     
     DailyOne *object = self.array[indexPath.row];
@@ -80,8 +97,10 @@ static NSString * const kTableName = @"table";
     UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
     timeLabel.text = object.CreateDate;
     
-    UIImageView *headImgView = (UIImageView *)[cell.contentView viewWithTag:3];
-    //headImgView.image = [UIImage imageWithData:order.image];
+    UIImageView *imageAtt = (UIImageView *)[cell.contentView viewWithTag:3];
+    
+    NSData *reader = [NSData dataWithContentsOfFile:object.Image];
+    imageAtt.image = [UIImage imageWithData:reader];
     
     return cell;
 }
@@ -96,6 +115,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [realm commitWriteTransaction];
     }
 }
+//-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    DailyOne *object = self.array[indexPath.row];
+//    
+//    DailyDetailViewController *detailC = [[DailyDetailViewController alloc]init];
+//    detailC.BigBody.text = object.Body;
+//    NSData *reader = [NSData dataWithContentsOfFile:object.Image];
+//    detailC.BigImage.image = [UIImage imageWithData:reader];
+//}
 
 #pragma mark - Actions
 

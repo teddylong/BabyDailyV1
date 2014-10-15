@@ -10,6 +10,7 @@
 #import "WriteDailyViewController.h"
 #import "UzysAssetsPickerController.h"
 #import "DailyOne.h"
+#import "AFNetworking.h"
 
 
 
@@ -81,9 +82,53 @@
     d.CreateDate = dateString;
     d.Body = self.DailyBody.text;
     
-    NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
-    NSString *testString = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
-    d.Image = @"";
+    //NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
+    
+//    NSDateFormatter *time = [[NSDateFormatter alloc]init];
+//    time.dateFormat = @"YYYY-MM-DD-HH-mm-ss";
+//    NSString *fileName = [[time stringFromDate:[NSDate date]] stringByAppendingString: @".png"];
+    
+
+    
+    
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+//    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:fileName]];
+//    NSLog(filePath);
+    
+    
+//    BOOL result = [UIImagePNGRepresentation(self.upLoadImg.image)writeToFile: filePath    atomically:YES];
+//    if(result)
+//    {
+//        NSLog(@"Success Save PNG");
+//        
+        NSURL *baseURL = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/"];
+        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
+        //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        
+        NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
+        
+        [manager POST:@"upload.php" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:imageData name:@"uploaded" fileName:@"daily.png" mimeType:@"image/jpeg"];
+        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dic = responseObject;
+            NSString * filename = dic[@"filename"];
+            NSLog(@"upload Success: %@", filename);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"upload Error: %@", error);  
+        }];
+        
+        d.Image = @"";
+//    }
+//    else
+//    {
+//        NSLog(@"Failed Save PNG");
+//        d.Image = @"";
+//    }
+
+    
 
     RLMRealm *realm = [RLMRealm defaultRealm];
     
