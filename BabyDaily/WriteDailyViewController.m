@@ -11,6 +11,7 @@
 #import "UzysAssetsPickerController.h"
 #import "DailyOne.h"
 #import "AFNetworking.h"
+#import "QiniuSDK.h"
 
 
 
@@ -24,6 +25,7 @@
 @implementation WriteDailyViewController
 
 @synthesize strTtile;
+@synthesize AllToken;
 
 - (void)viewDidLoad {
     
@@ -91,37 +93,55 @@
     d.Location = @"SH";
     d.Tag = @"";
     
-    
-    NSURL *baseURL = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/"];
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/json"];
-    
-    NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
+    [self getToken:d];
+}
+
+- (void)getToken:(DailyOne *) entity
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //[manager responseSerializer:]
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:@"http://teddylong.net/qiniu/GetTokenOnce.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
+        AllToken = [responseObject objectForKey:@"MyToken"];
+        NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
         
-    [manager POST:@"upload.php" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:imageData name:@"uploaded" fileName:@"daily.png" mimeType:@"image/jpeg"];
-        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSDictionary *dic = responseObject;
-            NSString * filename = dic[@"FileName"];
-            NSLog(@"upload Success: %@", filename);
-            
-            NSString * mmm = [@"http://teddylong.net/BabyDaily/upload/" stringByAppendingString:filename];
-            d.Image = @"http://babydaily.oss-cn-hangzhou.aliyuncs.com/656657BA-3442-4C91-BEA6-CD844D20E826.png";
-            
-            RLMRealm *realm = [RLMRealm defaultRealm];
-            [realm beginWriteTransaction];
-            [realm addObject:d];
-            [realm commitWriteTransaction];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"upload Error: %@", error);
-            d.Image = @"";
-        }];
+        [self UploadImg: imageData:AllToken:entity];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+    }];
     
 }
 
-
+     -(void) UploadImg:(NSData *) uploaddata: (NSString *) token: (DailyOne *) entity
+{
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd-HH-mm-ss"];
+    NSString *stringFromDate = [formatter stringFromDate:[[NSDate alloc]init]];
+    NSString *filename = [stringFromDate stringByAppendingString:@".png"];
+    
+    
+    
+    [upManager putData:uploaddata key:filename token:token
+              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                  entity.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filename];
+                  
+                  RLMRealm *realm = [RLMRealm defaultRealm];
+                  [realm beginWriteTransaction];
+                  [realm addObject:entity];
+                  [realm commitWriteTransaction];
+                  NSLog(@"%@", info);
+                  NSLog(@"%@", resp);
+                  
+              } option:nil];
+    
+    
+}
 
 
 @end

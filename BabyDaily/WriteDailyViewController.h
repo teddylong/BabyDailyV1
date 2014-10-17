@@ -16,4 +16,6 @@
 - (IBAction)SaveDaily:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *DailyBody;
 @property(nonatomic,weak)NSString *strTtile;
+
+@property(nonatomic, weak) NSString *AllToken;
 @end

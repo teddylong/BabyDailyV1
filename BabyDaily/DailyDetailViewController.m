@@ -7,12 +7,13 @@
 //
 
 #import "DailyDetailViewController.h"
+#import "PAImageView.h"
 
 @implementation DailyDetailViewController
 
 @synthesize daily;
 @synthesize BigBody;
-@synthesize BigImage;
+@synthesize cirImg;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,10 +29,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    cirImg = [[PAImageView alloc] initWithFrame:CGRectMake(80.0f, 80.0f, 200.0f, 200.0f) backgroundProgressColor:[UIColor whiteColor] progressColor:[UIColor lightGrayColor]];
+    [self.view addSubview:cirImg];
+    [cirImg setImageURL:[[NSURL alloc] initWithString:daily.Image]];
     BigBody.text = daily.Body;
-    NSData *reader = [NSData dataWithContentsOfFile:daily.Image];
-    BigImage.image = [UIImage imageWithData:reader];
+   
+    
+//    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:daily.Image]]];
+//    
+//    BigImage.image = asdasd;
+    
+
 }
 
 - (void)didReceiveMemoryWarning

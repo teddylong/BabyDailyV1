@@ -111,15 +111,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [realm commitWriteTransaction];
     }
 }
-//-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    DailyOne *object = self.array[indexPath.row];
-//    
-//    DailyDetailViewController *detailC = [[DailyDetailViewController alloc]init];
-//    detailC.BigBody.text = object.Body;
-//    NSData *reader = [NSData dataWithContentsOfFile:object.Image];
-//    detailC.BigImage.image = [UIImage imageWithData:reader];
-//}
 
 #pragma mark - Actions
 
