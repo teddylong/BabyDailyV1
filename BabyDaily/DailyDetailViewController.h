@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DailyOne.h"
-#import "PAImageView.h"
+//#import "PAImageView.h"
+#import "AsyncImageView.h"
 
 @interface DailyDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *BigBody;
 
 @property (nonatomic, strong) DailyOne *daily;
-@property (nonatomic,strong) PAImageView* cirImg;
+@property (nonatomic,strong) AsyncImageView* BigAsyncImg;
 @end

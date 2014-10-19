@@ -11,6 +11,7 @@
 #import "DailyOne.h"
 #import <Realm/Realm.h>
 #import "DailyDetailViewController.h"
+#import "AsyncImageView.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
@@ -81,7 +82,15 @@ static NSString * const kTableName = @"table";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:@"cell"];
+        //add AsyncImageView to cell
+        AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        imageView.tag = 99;
+        [cell addSubview:imageView];
     }
+    
+    
     
     DailyOne *object = self.array[indexPath.row];
     
@@ -91,12 +100,24 @@ static NSString * const kTableName = @"table";
     UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
     timeLabel.text = object.CreateDate;
     
-    UIImageView *imageAtt = (UIImageView *)[cell.contentView viewWithTag:3];
+//    UIImageView *imageAtt = (UIImageView *)[cell.contentView viewWithTag:3];
+//    
+//    
+//    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.Image]]];
     
+//    imageAtt.image = asdasd;
+    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 90.0f, 90.0f)];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    imageView.tag = 99;
+    [cell addSubview:imageView];
+    //syncImageView *imageView = (AsyncImageView *)[cell.contentView viewWithTag:99];
     
-    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.Image]]];
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
     
-    imageAtt.image = asdasd;
+    //load the image
+    imageView.imageURL = [[NSURL alloc] initWithString:object.Image];
     
     return cell;
 }

@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //调试信息
     self.DText.text = strTtile;
     
 }
@@ -40,7 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+    //点击增加一张图片
 - (IBAction)AddImg:(id)sender {
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.delegate = self;
@@ -50,7 +50,7 @@
         
     }];
 }
-
+    //显示手机中照片集
 - (void)UzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
     self.upLoadImg.backgroundColor = [UIColor clearColor];
@@ -61,10 +61,15 @@
         [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ALAsset *representation = obj;
             
-            UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
-                                               scale:representation.defaultRepresentation.scale
-                                         orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+            UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullScreenImage];
+            weakSelf.upLoadImg.frame = CGRectMake(100.0f, 237.0f, 320.0f, img.size.height*320.0/img.size.width);
             weakSelf.upLoadImg.image = img;
+            //调试信息
+            //NSString *stringFloat = [NSString stringWithFormat:@"%f",img.size.width];
+            //NSString *stringFloat2 = [NSString stringWithFormat:@"%f",img.size.height];
+            //NSLog(stringFloat);
+            //NSLog(stringFloat2);
+            
             *stop = YES;
         }];
         
@@ -72,7 +77,7 @@
     }
     
 }
-
+    //点击保存日记
 - (IBAction)SaveDaily:(id)sender {
     
     DailyOne *d = [[DailyOne alloc] init];
@@ -95,11 +100,10 @@
     
     [self getToken:d];
 }
-
+    //取得七牛空间Token
 - (void)getToken:(DailyOne *) entity
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //[manager responseSerializer:]
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:@"http://teddylong.net/qiniu/GetTokenOnce.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -115,8 +119,8 @@
     }];
     
 }
-
-     -(void) UploadImg:(NSData *) uploaddata: (NSString *) token: (DailyOne *) entity
+    //上传图片并保存日记
+-(void) UploadImg:(NSData *) uploaddata: (NSString *) token: (DailyOne *) entity
 {
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     

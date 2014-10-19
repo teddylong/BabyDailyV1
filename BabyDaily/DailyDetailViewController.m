@@ -7,13 +7,14 @@
 //
 
 #import "DailyDetailViewController.h"
-#import "PAImageView.h"
+//#import "PAImageView.h"
+#import "AsyncImageView.h"
 
 @implementation DailyDetailViewController
 
 @synthesize daily;
 @synthesize BigBody;
-@synthesize cirImg;
+@synthesize BigAsyncImg;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,17 +28,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    cirImg = [[PAImageView alloc] initWithFrame:CGRectMake(80.0f, 80.0f, 200.0f, 200.0f) backgroundProgressColor:[UIColor whiteColor] progressColor:[UIColor lightGrayColor]];
-    [self.view addSubview:cirImg];
-    [cirImg setImageURL:[[NSURL alloc] initWithString:daily.Image]];
+    //加载Body详细
     BigBody.text = daily.Body;
-   
+    //加载大图片
+    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 200.0f)];
+    imageView.contentMode =UIViewContentModeScaleAspectFit;
+    imageView.clipsToBounds = YES;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
+    imageView.imageURL = [[NSURL alloc] initWithString:daily.Image];
+    //调整大图片背景大小
+    imageView.frame = CGRectMake(0.0f, 80.0f, 320.0f, imageView.image.size.height*320.0/imageView.image.size.width);
     
-//    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:daily.Image]]];
-//    
-//    BigImage.image = asdasd;
+    //调试信息
+    //NSString *stringFloat = [NSString stringWithFormat:@"%f",imageView.image.size.width];
+    //NSLog(stringFloat);
+
+    [self.view addSubview:imageView];
     
 
 }

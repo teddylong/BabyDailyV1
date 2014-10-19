@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F37E87219F2CC3500E5AD39 /* 2014-10-19-00-11-07.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F37E87119F2CC3500E5AD39 /* 2014-10-19-00-11-07.png */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
+		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
 		D027E9B319ED29D0007A3EB9 /* DailyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D027E9B219ED29D0007A3EB9 /* DailyOne.m */; };
 		D06B453319F0F3E300D1FE72 /* QNConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D06B451719F0F3E300D1FE72 /* QNConfig.m */; };
@@ -73,8 +75,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F37E87119F2CC3500E5AD39 /* 2014-10-19-00-11-07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2014-10-19-00-11-07.png"; sourceTree = "<group>"; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
+		9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		D00E0F4F19F1149E00BD072E /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
 		D00E0F5019F1149E00BD072E /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
 		D027E9B119ED29D0007A3EB9 /* DailyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyOne.h; sourceTree = "<group>"; };
@@ -203,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FFD96F719F142EF004D5AF2 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */,
+				9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */,
+			);
+			path = AsyncImageView;
+			sourceTree = "<group>";
+		};
 		D00E0F4E19F1148D00BD072E /* PAImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +354,8 @@
 		D09130E619EBDAEF0086C423 = {
 			isa = PBXGroup;
 			children = (
+				9F37E87119F2CC3500E5AD39 /* 2014-10-19-00-11-07.png */,
+				9FFD96F719F142EF004D5AF2 /* AsyncImageView */,
 				D00E0F4E19F1148D00BD072E /* PAImageView */,
 				D06B454019F0F42600D1FE72 /* FrameWork */,
 				D06B451319F0F3BB00D1FE72 /* QiNiu */,
@@ -550,6 +566,7 @@
 			files = (
 				D091310119EBDAEF0086C423 /* Main.storyboard in Resources */,
 				D091310619EBDAEF0086C423 /* LaunchScreen.xib in Resources */,
+				9F37E87219F2CC3500E5AD39 /* 2014-10-19-00-11-07.png in Resources */,
 				D071449C19ECED05001AD540 /* UzysAssetsPickerController.xib in Resources */,
 				D071449A19ECED05001AD540 /* UzysAssetPickerController.bundle in Resources */,
 				D091310319EBDAEF0086C423 /* Images.xcassets in Resources */,
@@ -571,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09130FE19EBDAEF0086C423 /* SecondViewController.m in Sources */,
+				9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */,
 				D071449D19ECED05001AD540 /* UzysAssetsViewCell.m in Sources */,
 				D0FD5BFD19EE679C0068FE00 /* UIButton+AFNetworking.m in Sources */,
 				D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */,
