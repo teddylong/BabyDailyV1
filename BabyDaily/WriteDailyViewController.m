@@ -85,20 +85,32 @@
     d.User = @"Teddy";
     d.ID = @"1";
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
     
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    d.CreateDate = dateString;
-    d.UpdateDate = dateString;
+    
+    d.CreateDate = strDate;
+    d.UpdateDate = strDate;
     d.Weather = @"Rain";
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     d.UDID = idfv;
     d.Body = self.DailyBody.text;
     d.Location = @"SH";
     d.Tag = @"";
-    
-    [self getToken:d];
+    if( self.upLoadImg.image == nil)
+    {
+        d.Image = @"";
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm addObject:d];
+        [realm commitWriteTransaction];
+        
+    }
+    else
+    {
+        [self getToken:d];
+    }
 }
     //取得七牛空间Token
 - (void)getToken:(DailyOne *) entity

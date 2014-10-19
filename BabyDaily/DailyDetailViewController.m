@@ -6,15 +6,17 @@
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
 //
 
+
 #import "DailyDetailViewController.h"
 //#import "PAImageView.h"
 #import "AsyncImageView.h"
 
+
 @implementation DailyDetailViewController
 
 @synthesize daily;
-@synthesize BigBody;
-@synthesize BigAsyncImg;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,27 +27,79 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //加载Body详细
-    BigBody.text = daily.Body;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(imageLoaded:)
+                                                 name:AsyncImageLoadDidFinish
+                                               object:nil];
+    
+    //加载Scroll VIew
+    scrollView = (UIScrollView *)[self.view viewWithTag:99];
+    
     //加载大图片
-    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 200.0f)];
-    imageView.contentMode =UIViewContentModeScaleAspectFit;
-    imageView.clipsToBounds = YES;
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
-    imageView.imageURL = [[NSURL alloc] initWithString:daily.Image];
-    //调整大图片背景大小
-    imageView.frame = CGRectMake(0.0f, 80.0f, 320.0f, imageView.image.size.height*320.0/imageView.image.size.width);
+    BigImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
     
-    //调试信息
-    //NSString *stringFloat = [NSString stringWithFormat:@"%f",imageView.image.size.width];
-    //NSLog(stringFloat);
-
-    [self.view addSubview:imageView];
     
+    BigImage.contentMode =UIViewContentModeScaleAspectFit;
+    BigImage.clipsToBounds = YES;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
+    if([daily.Image isEqual:@""])
+    {
+        BigImage.image = nil;
+        
+        CGRect frame = BigImage.frame;
+        frame.size.height = 0;
+        
+        BigImage.frame = frame;
+        
+    }
+    else
+    {
+        BigImage.imageURL = [[NSURL alloc] initWithString:daily.Image];
+        
+        //取消cache
+        [AsyncImageLoader sharedLoader].cache = nil;
+    }
+   
+    
+    //加载Body详细
+    BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + 10, 320.0f, 200.0f)];
+    BigText.text = daily.Body;
+    
+    
+    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height+20);
+    
+    [scrollView setContentSize:newSize];
 
+    [scrollView addSubview:BigText];
+    [scrollView addSubview:BigImage];
+
+}
+    //异步加载Image
+- (void)imageLoaded:(NSNotification *)notification
+{
+    
+    BigImage = notification.object;
+    
+    [BigImage setFrame:CGRectMake(0.0f, 0.0f, 320.0f, BigImage.image.size.height*320.0/BigImage.image.size.width)];
+    
+    
+    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, BigText.contentSize.height)];
+    
+    CGRect frame = BigText.frame;
+    frame.size.height = BigText.contentSize.height;
+    BigText.frame = frame;
+
+    [scrollView addSubview:BigImage];
+    [scrollView addSubview:BigText];
+    
+    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigText.frame.size.height+ + BigImage.frame.size.height + 50);
+    [scrollView setContentSize:newSize];
+    
 }
 
 - (void)didReceiveMemoryWarning

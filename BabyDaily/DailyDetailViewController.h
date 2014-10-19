@@ -12,8 +12,12 @@
 #import "AsyncImageView.h"
 
 @interface DailyDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *BigBody;
+{
+    IBOutlet UIScrollView *scrollView;
+    AsyncImageView *BigImage;
+    UITextView *BigText;
+}
 
 @property (nonatomic, strong) DailyOne *daily;
-@property (nonatomic,strong) AsyncImageView* BigAsyncImg;
+
 @end

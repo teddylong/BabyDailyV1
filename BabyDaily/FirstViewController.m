@@ -32,6 +32,9 @@ static NSString * const kTableName = @"table";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorColor = [UIColor colorWithRed:52.0f/255.0f green:53.0f/255.0f blue:61.0f/255.0f alpha:1];
+    
     // Set realm notification block
     __weak typeof(self) weakSelf = self;
     
@@ -89,7 +92,8 @@ static NSString * const kTableName = @"table";
         imageView.tag = 99;
         [cell addSubview:imageView];
     }
-    
+    //选取cell不变色
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     DailyOne *object = self.array[indexPath.row];
@@ -99,25 +103,27 @@ static NSString * const kTableName = @"table";
     
     UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
     timeLabel.text = object.CreateDate;
-    
-//    UIImageView *imageAtt = (UIImageView *)[cell.contentView viewWithTag:3];
-//    
-//    
-//    UIImage *asdasd = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.Image]]];
-    
-//    imageAtt.image = asdasd;
+
     AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 90.0f, 90.0f)];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.tag = 99;
     [cell addSubview:imageView];
-    //syncImageView *imageView = (AsyncImageView *)[cell.contentView viewWithTag:99];
+
     
     //cancel loading previous image for cell
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
     
-    //load the image
-    imageView.imageURL = [[NSURL alloc] initWithString:object.Image];
+    if([object.Image isEqual: @""])
+    {
+        imageView.image = nil;
+    }else
+    {
+        NSString *tempString = [object.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
+    
+        //load the image
+        imageView.imageURL = [[NSURL alloc] initWithString:tempString];
+    }
     
     return cell;
 }
