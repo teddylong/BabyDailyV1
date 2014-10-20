@@ -12,6 +12,7 @@
 #import <Realm/Realm.h>
 #import "DailyDetailViewController.h"
 #import "AsyncImageView.h"
+#import "MJRefresh.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
@@ -33,6 +34,9 @@ static NSString * const kTableName = @"table";
     self.tableView.dataSource = self;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    
+    
     //self.tableView.separatorColor = [UIColor colorWithRed:52.0f/255.0f green:53.0f/255.0f blue:61.0f/255.0f alpha:1];
     
     // Set realm notification block
@@ -49,6 +53,12 @@ static NSString * const kTableName = @"table";
     [super didReceiveMemoryWarning];
 }
 
+- (void)headerRereshing
+{
+    [self reloadData];
+    [self.tableView headerEndRefreshing];
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -80,6 +90,8 @@ static NSString * const kTableName = @"table";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
@@ -104,7 +116,7 @@ static NSString * const kTableName = @"table";
     UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
     timeLabel.text = object.CreateDate;
 
-    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 90.0f, 90.0f)];
+    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 10.0f, 90.0f, 90.0f)];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.tag = 99;
@@ -123,6 +135,7 @@ static NSString * const kTableName = @"table";
     
         //load the image
         imageView.imageURL = [[NSURL alloc] initWithString:tempString];
+        [AsyncImageLoader sharedLoader].cache = [AsyncImageLoader defaultCache];
     }
     
     return cell;
@@ -138,6 +151,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [realm commitWriteTransaction];
     }
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 110;
+//}
 
 #pragma mark - Actions
 
