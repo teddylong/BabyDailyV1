@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
 		9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */,
 				D06B453F19F0F3FE00D1FE72 /* libz.dylib in Frameworks */,
 				D07144B219ED017C001AD540 /* Realm.framework in Frameworks */,
 				D07144B119ED00E5001AD540 /* libc++.dylib in Frameworks */,
@@ -399,6 +402,7 @@
 		D09130E619EBDAEF0086C423 = {
 			isa = PBXGroup;
 			children = (
+				9F5FD35C19F54BC500274E6A /* MapKit.framework */,
 				D05C1E5219F4C614005F6504 /* MJRefresh */,
 				9FFD96F719F142EF004D5AF2 /* AsyncImageView */,
 				D00E0F4E19F1148D00BD072E /* PAImageView */,

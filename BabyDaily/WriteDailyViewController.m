@@ -12,11 +12,13 @@
 #import "DailyOne.h"
 #import "AFNetworking.h"
 #import "QiniuSDK.h"
+#import <MapKit/MapKit.h>
 
 
 
 @interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate>
 
+@property (assign, nonatomic) CLLocationCoordinate2D *latestCoordinate;
 
 
 
@@ -160,4 +162,27 @@
 }
 
 
+- (IBAction)GetWeatherBtn:(id)sender {
+    
+    //Get Location
+    CLLocationManager *locationM = [[CLLocationManager alloc]init];
+    locationM.delegate = self;
+    
+    CLLocation *currentLocation = [[CLLocation alloc]init];
+    
+    CLLocationCoordinate2D coordinate;
+    
+    coordinate.longitude = currentLocation.coordinate.longitude;
+    coordinate.latitude = currentLocation.coordinate.latitude;
+    
+    _latestCoordinate = &coordinate;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://example.com/resources.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+}
 @end

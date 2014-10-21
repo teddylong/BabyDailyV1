@@ -113,8 +113,14 @@ static NSString * const kTableName = @"table";
     UILabel* bodyLabel = (UILabel *)[cell.contentView viewWithTag:1];
     bodyLabel.text = object.Body;
     
-    UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
-    timeLabel.text = object.CreateDate;
+    NSString *dailyDate = [object.CreateDate componentsSeparatedByString:@" "][0];
+    NSString *dailyTime = [object.CreateDate componentsSeparatedByString:@" "][1];
+    
+    UILabel* dailyDateLabel = (UILabel *)[cell.contentView viewWithTag:2];
+    dailyDateLabel.text = dailyDate;
+    
+    UILabel* dailyTimeLabel = (UILabel *)[cell.contentView viewWithTag:4];
+    dailyTimeLabel.text = dailyTime;
 
     AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 10.0f, 90.0f, 90.0f)];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
