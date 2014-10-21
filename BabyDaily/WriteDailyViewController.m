@@ -16,11 +16,11 @@
 
 
 
-@interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate>
+@interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate,CLLocationManagerDelegate>
 
 @property (assign, nonatomic) CLLocationCoordinate2D *latestCoordinate;
-
-
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (assign, nonatomic) UIImage *willUploadImage;
 
 @end
 
@@ -64,13 +64,14 @@
             ALAsset *representation = obj;
             
             UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullScreenImage];
-            weakSelf.upLoadImg.frame = CGRectMake(100.0f, 237.0f, 320.0f, img.size.height*320.0/img.size.width);
-            weakSelf.upLoadImg.image = img;
-            //调试信息
-            //NSString *stringFloat = [NSString stringWithFormat:@"%f",img.size.width];
-            //NSString *stringFloat2 = [NSString stringWithFormat:@"%f",img.size.height];
-            //NSLog(stringFloat);
-            //NSLog(stringFloat2);
+            //weakSelf.upLoadImg.frame = CGRectMake(100.0f, 237.0f, 320.0f, img.size.height*320.0/img.size.width);
+            
+            
+            weakSelf.willUploadImage = img;
+            
+            
+            [weakSelf.AddImgBtn setBackgroundImage:img forState:UIControlStateNormal];
+            
             
             *stop = YES;
         }];
@@ -79,6 +80,8 @@
     }
     
 }
+
+
     //点击保存日记
 - (IBAction)SaveDaily:(id)sender {
     
@@ -100,7 +103,7 @@
     d.Body = self.DailyBody.text;
     d.Location = @"SH";
     d.Tag = @"";
-    if( self.upLoadImg.image == nil)
+    if( self.willUploadImage == nil)
     {
         d.Image = @"";
         RLMRealm *realm = [RLMRealm defaultRealm];
@@ -123,7 +126,9 @@
         NSLog(@"JSON: %@", responseObject);
 
         AllToken = [responseObject objectForKey:@"MyToken"];
-        NSData *imageData = UIImagePNGRepresentation(self.upLoadImg.image);
+        
+        
+        NSData *imageData = UIImagePNGRepresentation(self.willUploadImage);
         
         [self UploadImg: imageData:AllToken:entity];
         
@@ -165,24 +170,61 @@
 - (IBAction)GetWeatherBtn:(id)sender {
     
     //Get Location
-    CLLocationManager *locationM = [[CLLocationManager alloc]init];
-    locationM.delegate = self;
+    _locationManager = [[CLLocationManager alloc]init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    [_locationManager requestAlwaysAuthorization];
+    [_locationManager requestWhenInUseAuthorization];
     
-    CLLocation *currentLocation = [[CLLocation alloc]init];
+    [_locationManager startUpdatingLocation];
     
-    CLLocationCoordinate2D coordinate;
     
-    coordinate.longitude = currentLocation.coordinate.longitude;
-    coordinate.latitude = currentLocation.coordinate.latitude;
     
-    _latestCoordinate = &coordinate;
+}
+// Called when the location is updated
+- (void)locationManager:(CLLocationManager *)locationManager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    
+    [_locationManager stopUpdatingLocation];
+    double longitude = newLocation.coordinate.longitude;
+    double latitude = newLocation.coordinate.latitude;
+    
+    NSNumber *nlongitude = [NSNumber numberWithDouble:longitude];
+    NSNumber *nlatitude = [NSNumber numberWithDouble:latitude];
+    
+    NSString *url = [[[@"http://api.openweathermap.org/data/2.5/weather?lat=" stringByAppendingString: [nlatitude stringValue]] stringByAppendingString:@"&lon="] stringByAppendingString:[nlongitude stringValue]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://example.com/resources.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
         NSLog(@"JSON: %@", responseObject);
+        
+        NSDictionary *countryDict = responseObject[@"sys"];
+        NSString *country = countryDict[@"country"];
+        NSDictionary *weatherDict = [responseObject[@"weather" ] firstObject];
+        NSString *weather = weatherDict[@"description"];
+        NSDictionary *tempDict = responseObject[@"main"];
+        NSNumber *temp = tempDict[@"temp"];
+        NSString *city = responseObject[@"name"];
+        
+        NSLog(country);
+        NSLog(weather);
+        NSLog([temp stringValue]);
+        NSLog(city);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+
+
+}
+
+- (void)locationManager:(CLLocationManager *)locationManager didFailWithError:(NSError *)error
+{
     
 }
+
 @end
