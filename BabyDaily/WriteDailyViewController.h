@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *DailyBody;
 @property(nonatomic,weak)NSString *strTtile;
 
-- (IBAction)GetWeatherBtn:(id)sender;
+- (IBAction)GetLocationWeather:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *GetWeatherBtn;
 @property(nonatomic, weak) NSString *AllToken;
 @end

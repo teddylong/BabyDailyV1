@@ -21,6 +21,7 @@
 @property (assign, nonatomic) CLLocationCoordinate2D *latestCoordinate;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (assign, nonatomic) UIImage *willUploadImage;
+@property (nonatomic, strong) DailyOne *daily;
 
 @end
 
@@ -34,6 +35,10 @@
     [super viewDidLoad];
     //调试信息
     self.DText.text = strTtile;
+    
+     _daily = [[DailyOne alloc] init];
+    _daily.Weather = @"";
+    _daily.Location = @"";
     
 }
 
@@ -85,37 +90,39 @@
     //点击保存日记
 - (IBAction)SaveDaily:(id)sender {
     
-    DailyOne *d = [[DailyOne alloc] init];
+   
     
-    d.User = @"Teddy";
-    d.ID = @"1";
+    _daily.User = @"Teddy";
+    _daily.ID = @"1";
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
     
     
-    d.CreateDate = strDate;
-    d.UpdateDate = strDate;
-    d.Weather = @"Rain";
+    _daily.CreateDate = strDate;
+    _daily.UpdateDate = strDate;
+    //d.Weather = @"Rain";
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    d.UDID = idfv;
-    d.Body = self.DailyBody.text;
-    d.Location = @"SH";
-    d.Tag = @"";
+    _daily.UDID = idfv;
+    _daily.Body = self.DailyBody.text;
+    //d.Location = @"SH";
+    _daily.Tag = @"";
     if( self.willUploadImage == nil)
     {
-        d.Image = @"";
+        _daily.Image = @"";
+        
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
-        [realm addObject:d];
+        [realm addObject:_daily];
         [realm commitWriteTransaction];
-        
     }
     else
     {
-        [self getToken:d];
+        [self getToken:_daily];
     }
+    
+    
 }
     //取得七牛空间Token
 - (void)getToken:(DailyOne *) entity
@@ -163,13 +170,10 @@
                   
               } option:nil];
     
-    
 }
 
 
-- (IBAction)GetWeatherBtn:(id)sender {
-    
-    //Get Location
+- (IBAction)GetLocationWeather:(id)sender {
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -178,10 +182,8 @@
     [_locationManager requestWhenInUseAuthorization];
     
     [_locationManager startUpdatingLocation];
-    
-    
-    
 }
+
 // Called when the location is updated
 - (void)locationManager:(CLLocationManager *)locationManager
     didUpdateToLocation:(CLLocation *)newLocation
@@ -209,6 +211,44 @@
         NSDictionary *tempDict = responseObject[@"main"];
         NSNumber *temp = tempDict[@"temp"];
         NSString *city = responseObject[@"name"];
+        
+        double cTemp = [temp doubleValue];
+        NSInteger convertedValue =  ceil(cTemp - 273.15);
+        
+        _daily.Weather = [[[weather stringByAppendingString:@","] stringByAppendingString:[@(convertedValue) stringValue]] stringByAppendingString:@"°"];
+        _daily.Location = [[country stringByAppendingString:@","] stringByAppendingString:city];
+        
+        if([weather containsString:@"mist"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Fog"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"sun"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Sun"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"rain"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Rain"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"clouds"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Clouds"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"hail"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Hail"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"storm"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Storm"] forState:UIControlStateNormal];
+        }
+        else if ([weather containsString:@"snow"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Snow"] forState:UIControlStateNormal];
+        }
+        
+        
+        
         
         NSLog(country);
         NSLog(weather);

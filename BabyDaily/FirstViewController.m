@@ -126,6 +126,82 @@ static NSString * const kTableName = @"table";
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.tag = 99;
+    
+    
+    if(![object.Location  isEqual:@""])
+    {
+        
+        UILabel* locationInfo = (UILabel *)[cell.contentView viewWithTag:14];
+        locationInfo.text = object.Location;
+        
+    }
+    else
+    {
+        UIImageView *locationImage =(UIImageView *)[cell.contentView viewWithTag:12];
+        //locationImage = nil;
+        [locationImage setHidden:YES];
+        
+        UILabel* locationInfo = (UILabel *)[cell.contentView viewWithTag:14];
+        locationInfo.text = @"";
+
+    }
+    
+    if(![object.Weather isEqual:@""])
+    {
+        NSString *weatherInfo = [object.Weather componentsSeparatedByString:@","][0];
+        NSString *tempInfo = [object.Weather componentsSeparatedByString:@","][1];
+        
+        UILabel* weatherInfoLable = (UILabel *)[cell.contentView viewWithTag:8];
+        weatherInfoLable.text = weatherInfo;
+        
+        UILabel* tempInfoLabel = (UILabel *)[cell.contentView viewWithTag:6];
+        tempInfoLabel.text = tempInfo;
+        
+        UIImageView *weatherImage =(UIImageView *)[cell.contentView viewWithTag:10];
+
+        
+        if([weatherInfo containsString:@"mist"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Fog"];
+        }
+        else if ([weatherInfo containsString:@"sun"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Sun"];
+        }
+        else if ([weatherInfo containsString:@"rain"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Rain"];
+        }
+        else if ([weatherInfo containsString:@"clouds"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Clouds"];
+        }
+        else if ([weatherInfo containsString:@"hail"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Hail"];
+        }
+        else if ([weatherInfo containsString:@"storm"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Storm"];
+        }
+        else if ([weatherInfo containsString:@"snow"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Snow"];
+        }
+
+    }
+    else
+    {
+        UILabel* weatherInfoLable = (UILabel *)[cell.contentView viewWithTag:8];
+        weatherInfoLable.text = @"";
+        
+        UILabel* tempInfoLabel = (UILabel *)[cell.contentView viewWithTag:6];
+        tempInfoLabel.text = @"";
+        
+        UIImageView *weatherImage =(UIImageView *)[cell.contentView viewWithTag:10];
+        [weatherImage setHidden:YES];
+    }
+    
     [cell addSubview:imageView];
 
     
