@@ -13,6 +13,7 @@
 #import "DailyDetailViewController.h"
 #import "AsyncImageView.h"
 #import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
@@ -94,15 +95,9 @@ static NSString * const kTableName = @"table";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"cell"];
-        //add AsyncImageView to cell
-        AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.clipsToBounds = YES;
-        imageView.tag = 99;
-        [cell addSubview:imageView];
     }
     //选取cell不变色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -121,12 +116,9 @@ static NSString * const kTableName = @"table";
     
     UILabel* dailyTimeLabel = (UILabel *)[cell.contentView viewWithTag:4];
     dailyTimeLabel.text = dailyTime;
-
-    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(5.0f, 10.0f, 90.0f, 90.0f)];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.clipsToBounds = YES;
-    imageView.tag = 99;
     
+    
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     if(![object.Location  isEqual:@""])
     {
@@ -202,23 +194,14 @@ static NSString * const kTableName = @"table";
         [weatherImage setHidden:YES];
     }
     
-    [cell addSubview:imageView];
 
+
+    UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:100];
+    NSString *tempString = [object.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
+        
+    [viewImage sd_setImageWithURL:[[NSURL alloc] initWithString: tempString]];
+        
     
-    //cancel loading previous image for cell
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
-    
-    if([object.Image isEqual: @""])
-    {
-        imageView.image = nil;
-    }else
-    {
-        NSString *tempString = [object.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
-    
-        //load the image
-        imageView.imageURL = [[NSURL alloc] initWithString:tempString];
-        [AsyncImageLoader sharedLoader].cache = [AsyncImageLoader defaultCache];
-    }
     
     return cell;
 }

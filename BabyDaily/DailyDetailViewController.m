@@ -10,6 +10,7 @@
 #import "DailyDetailViewController.h"
 //#import "PAImageView.h"
 #import "AsyncImageView.h"
+#import "UIImageView+WebCache.h"
 
 
 @implementation DailyDetailViewController
@@ -32,21 +33,20 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(imageLoaded:)
-                                                 name:AsyncImageLoadDidFinish
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(imageLoaded:)
+//                                                 name:AsyncImageLoadDidFinish
+//                                               object:nil];
     
     //加载Scroll VIew
     scrollView = (UIScrollView *)[self.view viewWithTag:99];
     
     //加载大图片
-    BigImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
+    BigImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     
     
     BigImage.contentMode =UIViewContentModeScaleAspectFit;
-    BigImage.clipsToBounds = YES;
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
+    
     if([daily.Image isEqual:@""])
     {
         BigImage.image = nil;
@@ -59,10 +59,7 @@
     }
     else
     {
-        BigImage.imageURL = [[NSURL alloc] initWithString:daily.Image];
-        
-        //取消cache
-        [AsyncImageLoader sharedLoader].cache = nil;
+        [BigImage sd_setImageWithURL:[[NSURL alloc] initWithString: daily.Image]];
     }
    
     
