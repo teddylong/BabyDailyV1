@@ -10,7 +10,7 @@
 #import "DailyDetailViewController.h"
 //#import "PAImageView.h"
 #import "AsyncImageView.h"
-#import "UIImageView+WebCache.h"
+
 
 
 @implementation DailyDetailViewController
@@ -42,10 +42,11 @@
     scrollView = (UIScrollView *)[self.view viewWithTag:99];
     
     //加载大图片
-    BigImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
+    BigImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
     
-    BigImage.contentMode =UIViewContentModeScaleAspectFit;
+    BigImage.contentMode =UIViewContentModeScaleAspectFill;
     
     if([daily.Image isEqual:@""])
     {
@@ -59,7 +60,8 @@
     }
     else
     {
-        [BigImage sd_setImageWithURL:[[NSURL alloc] initWithString: daily.Image]];
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
+        BigImage.imageURL = [[NSURL alloc] initWithString:daily.Image];
     }
    
     
@@ -71,19 +73,10 @@
     CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height+20);
     
     [scrollView setContentSize:newSize];
-
-    [scrollView addSubview:BigText];
+    
     [scrollView addSubview:BigImage];
 
-}
-    //异步加载Image
-- (void)imageLoaded:(NSNotification *)notification
-{
-    
-    BigImage = notification.object;
-    
-    [BigImage setFrame:CGRectMake(0.0f, 0.0f, 320.0f, BigImage.image.size.height*320.0/BigImage.image.size.width)];
-    
+    [scrollView addSubview:BigText];
     
     [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, BigText.contentSize.height)];
     
@@ -91,13 +84,25 @@
     frame.size.height = BigText.contentSize.height;
     BigText.frame = frame;
 
-    [scrollView addSubview:BigImage];
-    [scrollView addSubview:BigText];
-    
-    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigText.frame.size.height+ + BigImage.frame.size.height + 50);
-    [scrollView setContentSize:newSize];
     
 }
+    //异步加载Image
+//- (void)imageLoaded:(NSNotification *)notification
+//{
+//    
+//    BigImage = notification.object;
+//    
+//    [BigImage setFrame:CGRectMake(0.0f, 0.0f, 320.0f, BigImage.image.size.height*320.0/BigImage.image.size.width)];
+//    
+//    
+//
+//    [scrollView addSubview:BigImage];
+//    [scrollView addSubview:BigText];
+//    
+//    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigText.frame.size.height+ + BigImage.frame.size.height + 50);
+//    [scrollView setContentSize:newSize];
+//    
+//}
 
 - (void)didReceiveMemoryWarning
 {

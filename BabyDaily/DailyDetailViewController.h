@@ -14,7 +14,7 @@
 @interface DailyDetailViewController : UIViewController
 {
     IBOutlet UIScrollView *scrollView;
-    UIImageView *BigImage;
+    AsyncImageView *BigImage;
     UITextView *BigText;
 }
 

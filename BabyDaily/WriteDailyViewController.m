@@ -35,6 +35,7 @@
     [super viewDidLoad];
     //调试信息
     self.DText.text = strTtile;
+    [self.DailyBody becomeFirstResponder];
     
      _daily = [[DailyOne alloc] init];
     _daily.Weather = @"";
