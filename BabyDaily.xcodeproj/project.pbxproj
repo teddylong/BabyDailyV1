@@ -11,6 +11,16 @@
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
+		D013B91319F8B4AE00DC5AA2 /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */; };
+		D013B91419F8B4AE00DC5AA2 /* ASProgressPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91219F8B4AE00DC5AA2 /* ASProgressPopUpView.m */; };
+		D013B91619F8C7FF00DC5AA2 /* QiniuUploadDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = D013B91519F8C76C00DC5AA2 /* QiniuUploadDelegate.h */; };
+		D013B91919F8C9A800DC5AA2 /* QiniuSimpleUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91819F8C9A800DC5AA2 /* QiniuSimpleUploader.m */; };
+		D013B92819F8CE6E00DC5AA2 /* QiniuBlkputRet.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91B19F8CE6E00DC5AA2 /* QiniuBlkputRet.m */; };
+		D013B92919F8CE6E00DC5AA2 /* QiniuConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91D19F8CE6E00DC5AA2 /* QiniuConfig.m */; };
+		D013B92A19F8CE6E00DC5AA2 /* QiniuHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91F19F8CE6E00DC5AA2 /* QiniuHttpClient.m */; };
+		D013B92B19F8CE6E00DC5AA2 /* QiniuResumableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92119F8CE6E00DC5AA2 /* QiniuResumableClient.m */; };
+		D013B92C19F8CE6E00DC5AA2 /* QiniuResumableUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92319F8CE6E00DC5AA2 /* QiniuResumableUploader.m */; };
+		D013B92D19F8CE6E00DC5AA2 /* QiniuUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92719F8CE6E00DC5AA2 /* QiniuUtils.m */; };
 		D027E9B319ED29D0007A3EB9 /* DailyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D027E9B219ED29D0007A3EB9 /* DailyOne.m */; };
 		D054E20E19F7976E00CB95F8 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D054E1EE19F7976E00CB95F8 /* MKAnnotationView+WebCache.m */; };
 		D054E20F19F7976E00CB95F8 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D054E1F019F7976E00CB95F8 /* NSData+ImageContentType.m */; };
@@ -106,6 +116,27 @@
 		9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		D00E0F4F19F1149E00BD072E /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
 		D00E0F5019F1149E00BD072E /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
+		D013B90F19F8B4AE00DC5AA2 /* ASPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPopUpView.h; sourceTree = "<group>"; };
+		D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPopUpView.m; sourceTree = "<group>"; };
+		D013B91119F8B4AE00DC5AA2 /* ASProgressPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProgressPopUpView.h; sourceTree = "<group>"; };
+		D013B91219F8B4AE00DC5AA2 /* ASProgressPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProgressPopUpView.m; sourceTree = "<group>"; };
+		D013B91519F8C76C00DC5AA2 /* QiniuUploadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiniuUploadDelegate.h; sourceTree = "<group>"; };
+		D013B91719F8C9A800DC5AA2 /* QiniuSimpleUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuSimpleUploader.h; sourceTree = "<group>"; };
+		D013B91819F8C9A800DC5AA2 /* QiniuSimpleUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuSimpleUploader.m; sourceTree = "<group>"; };
+		D013B91A19F8CE6E00DC5AA2 /* QiniuBlkputRet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuBlkputRet.h; sourceTree = "<group>"; };
+		D013B91B19F8CE6E00DC5AA2 /* QiniuBlkputRet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuBlkputRet.m; sourceTree = "<group>"; };
+		D013B91C19F8CE6E00DC5AA2 /* QiniuConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuConfig.h; sourceTree = "<group>"; };
+		D013B91D19F8CE6E00DC5AA2 /* QiniuConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuConfig.m; sourceTree = "<group>"; };
+		D013B91E19F8CE6E00DC5AA2 /* QiniuHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuHttpClient.h; sourceTree = "<group>"; };
+		D013B91F19F8CE6E00DC5AA2 /* QiniuHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuHttpClient.m; sourceTree = "<group>"; };
+		D013B92019F8CE6E00DC5AA2 /* QiniuResumableClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuResumableClient.h; sourceTree = "<group>"; };
+		D013B92119F8CE6E00DC5AA2 /* QiniuResumableClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuResumableClient.m; sourceTree = "<group>"; };
+		D013B92219F8CE6E00DC5AA2 /* QiniuResumableUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuResumableUploader.h; sourceTree = "<group>"; };
+		D013B92319F8CE6E00DC5AA2 /* QiniuResumableUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuResumableUploader.m; sourceTree = "<group>"; };
+		D013B92419F8CE6E00DC5AA2 /* QiniuSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QiniuSDK-Prefix.pch"; sourceTree = "<group>"; };
+		D013B92519F8CE6E00DC5AA2 /* QiniuUploadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuUploadDelegate.h; sourceTree = "<group>"; };
+		D013B92619F8CE6E00DC5AA2 /* QiniuUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuUtils.h; sourceTree = "<group>"; };
+		D013B92719F8CE6E00DC5AA2 /* QiniuUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuUtils.m; sourceTree = "<group>"; };
 		D027E9B119ED29D0007A3EB9 /* DailyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyOne.h; sourceTree = "<group>"; };
 		D027E9B219ED29D0007A3EB9 /* DailyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyOne.m; sourceTree = "<group>"; };
 		D054E1ED19F7976E00CB95F8 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -300,6 +331,17 @@
 			path = PAImageView;
 			sourceTree = "<group>";
 		};
+		D013B90E19F8B48B00DC5AA2 /* ASProgressPopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				D013B90F19F8B4AE00DC5AA2 /* ASPopUpView.h */,
+				D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */,
+				D013B91119F8B4AE00DC5AA2 /* ASProgressPopUpView.h */,
+				D013B91219F8B4AE00DC5AA2 /* ASProgressPopUpView.m */,
+			);
+			path = ASProgressPopUpView;
+			sourceTree = "<group>";
+		};
 		D054E1EC19F7975200CB95F8 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				D06B451419F0F3E300D1FE72 /* QiniuSDK */,
+				D013B91519F8C76C00DC5AA2 /* QiniuUploadDelegate.h */,
 			);
 			path = QiNiu;
 			sourceTree = "<group>";
@@ -374,6 +417,22 @@
 		D06B451419F0F3E300D1FE72 /* QiniuSDK */ = {
 			isa = PBXGroup;
 			children = (
+				D013B91A19F8CE6E00DC5AA2 /* QiniuBlkputRet.h */,
+				D013B91B19F8CE6E00DC5AA2 /* QiniuBlkputRet.m */,
+				D013B91C19F8CE6E00DC5AA2 /* QiniuConfig.h */,
+				D013B91D19F8CE6E00DC5AA2 /* QiniuConfig.m */,
+				D013B91E19F8CE6E00DC5AA2 /* QiniuHttpClient.h */,
+				D013B91F19F8CE6E00DC5AA2 /* QiniuHttpClient.m */,
+				D013B92019F8CE6E00DC5AA2 /* QiniuResumableClient.h */,
+				D013B92119F8CE6E00DC5AA2 /* QiniuResumableClient.m */,
+				D013B92219F8CE6E00DC5AA2 /* QiniuResumableUploader.h */,
+				D013B92319F8CE6E00DC5AA2 /* QiniuResumableUploader.m */,
+				D013B92419F8CE6E00DC5AA2 /* QiniuSDK-Prefix.pch */,
+				D013B92519F8CE6E00DC5AA2 /* QiniuUploadDelegate.h */,
+				D013B92619F8CE6E00DC5AA2 /* QiniuUtils.h */,
+				D013B92719F8CE6E00DC5AA2 /* QiniuUtils.m */,
+				D013B91719F8C9A800DC5AA2 /* QiniuSimpleUploader.h */,
+				D013B91819F8C9A800DC5AA2 /* QiniuSimpleUploader.m */,
 				D06B451519F0F3E300D1FE72 /* Common */,
 				D06B451F19F0F3E300D1FE72 /* Http */,
 				D06B452619F0F3E300D1FE72 /* QiniuSDK.h */,
@@ -491,6 +550,7 @@
 		D09130E619EBDAEF0086C423 = {
 			isa = PBXGroup;
 			children = (
+				D013B90E19F8B48B00DC5AA2 /* ASProgressPopUpView */,
 				D054E1EC19F7975200CB95F8 /* SDWebImage */,
 				9F5FD35C19F54BC500274E6A /* MapKit.framework */,
 				D05C1E5219F4C614005F6504 /* MJRefresh */,
@@ -726,37 +786,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D013B91619F8C7FF00DC5AA2 /* QiniuUploadDelegate.h in Sources */,
 				D054E21D19F7976E00CB95F8 /* UIView+WebCacheOperation.m in Sources */,
 				D05C1E6619F4C63F005F6504 /* MJRefreshFooterView.m in Sources */,
 				D09130FE19EBDAEF0086C423 /* SecondViewController.m in Sources */,
 				9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */,
+				D013B92819F8CE6E00DC5AA2 /* QiniuBlkputRet.m in Sources */,
+				D013B92D19F8CE6E00DC5AA2 /* QiniuUtils.m in Sources */,
 				D071449D19ECED05001AD540 /* UzysAssetsViewCell.m in Sources */,
 				D054E20F19F7976E00CB95F8 /* NSData+ImageContentType.m in Sources */,
 				D05C1E6819F4C63F005F6504 /* UIScrollView+MJExtension.m in Sources */,
 				D054E21B19F7976E00CB95F8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				D0FD5BFD19EE679C0068FE00 /* UIButton+AFNetworking.m in Sources */,
 				D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */,
+				D013B92919F8CE6E00DC5AA2 /* QiniuConfig.m in Sources */,
 				D0FD5C0119EE679C0068FE00 /* UIWebView+AFNetworking.m in Sources */,
+				D013B92C19F8CE6E00DC5AA2 /* QiniuResumableUploader.m in Sources */,
 				D06B453919F0F3E300D1FE72 /* QNUserAgent.m in Sources */,
 				D05C1E6519F4C63F005F6504 /* MJRefreshConst.m in Sources */,
 				D0FD5BFF19EE679C0068FE00 /* UIProgressView+AFNetworking.m in Sources */,
 				D0FD5BF319EE679C0068FE00 /* AFHTTPSessionManager.m in Sources */,
 				D07144A719ECFF9B001AD540 /* Daily.m in Sources */,
+				D013B91319F8B4AE00DC5AA2 /* ASPopUpView.m in Sources */,
 				D06B453D19F0F3E300D1FE72 /* QNUploadOption.m in Sources */,
 				D054E21419F7976E00CB95F8 /* SDWebImageDownloaderOperation.m in Sources */,
 				D054E21919F7976E00CB95F8 /* UIImage+MultiFormat.m in Sources */,
 				D0FD5BFE19EE679C0068FE00 /* UIImageView+AFNetworking.m in Sources */,
 				D0FD5BF419EE679C0068FE00 /* AFNetworkReachabilityManager.m in Sources */,
 				D0FD5BF119EE679C0068FE00 /* AFHTTPRequestOperation.m in Sources */,
+				D013B92B19F8CE6E00DC5AA2 /* QiniuResumableClient.m in Sources */,
 				D05C1E6719F4C63F005F6504 /* MJRefreshHeaderView.m in Sources */,
 				D0FD5BF719EE679C0068FE00 /* AFURLRequestSerialization.m in Sources */,
 				D0FD5BF619EE679C0068FE00 /* AFURLConnectionOperation.m in Sources */,
 				D06B453819F0F3E300D1FE72 /* QNResponseInfo.m in Sources */,
+				D013B91919F8C9A800DC5AA2 /* QiniuSimpleUploader.m in Sources */,
 				D0FD5BF919EE679C0068FE00 /* AFURLSessionManager.m in Sources */,
 				D06B453319F0F3E300D1FE72 /* QNConfig.m in Sources */,
 				D054E21C19F7976E00CB95F8 /* UIImageView+WebCache.m in Sources */,
 				D054E20E19F7976E00CB95F8 /* MKAnnotationView+WebCache.m in Sources */,
 				D054E21A19F7976E00CB95F8 /* UIImage+WebP.m in Sources */,
+				D013B91419F8B4AE00DC5AA2 /* ASProgressPopUpView.m in Sources */,
 				D09130FB19EBDAEF0086C423 /* FirstViewController.m in Sources */,
 				D05C1E6419F4C63F005F6504 /* MJRefreshBaseView.m in Sources */,
 				D06B453419F0F3E300D1FE72 /* QNCrc32.m in Sources */,
@@ -782,6 +851,7 @@
 				D0FD5C0019EE679C0068FE00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D06B453A19F0F3E300D1FE72 /* QNFileRecorder.m in Sources */,
 				D0FD5BFC19EE679C0068FE00 /* UIAlertView+AFNetworking.m in Sources */,
+				D013B92A19F8CE6E00DC5AA2 /* QiniuHttpClient.m in Sources */,
 				D06B453619F0F3E300D1FE72 /* QNUrlSafeBase64.m in Sources */,
 				D054E21319F7976E00CB95F8 /* SDWebImageDownloader.m in Sources */,
 				D05C1E6919F4C63F005F6504 /* UIScrollView+MJRefresh.m in Sources */,

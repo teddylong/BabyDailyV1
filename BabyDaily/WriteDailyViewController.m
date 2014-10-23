@@ -12,16 +12,20 @@
 #import "DailyOne.h"
 #import "AFNetworking.h"
 #import "QiniuSDK.h"
+#import "QiniuUploadDelegate.h"
 #import <MapKit/MapKit.h>
+#import "ASPopUpView.h"
+#import "ASProgressPopUpView.h"
+#import "QiniuSimpleUploader.h"
 
 
-
-@interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate,CLLocationManagerDelegate>
+@interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate,CLLocationManagerDelegate,QiniuUploadDelegate>
 
 @property (assign, nonatomic) CLLocationCoordinate2D *latestCoordinate;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (assign, nonatomic) UIImage *willUploadImage;
 @property (nonatomic, strong) DailyOne *daily;
+@property (nonatomic) ASProgressPopUpView* myProgressView;
 
 @end
 
@@ -151,26 +155,38 @@
 {
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     
+    QiniuSimpleUploader *newUpLoader = [QiniuSimpleUploader uploaderWithToken:token];
+    newUpLoader.delegate = self;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat: @"yyyy-MM-dd-HH-mm-ss"];
     NSString *stringFromDate = [formatter stringFromDate:[[NSDate alloc]init]];
     NSString *filename = [stringFromDate stringByAppendingString:@".png"];
     
+    [newUpLoader uploadFileData:uploaddata key:filename extra:nil];
     
+    _myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 100.0f)];
+    _myProgressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:26];
+    _myProgressView.popUpViewAnimatedColors = @[[UIColor redColor], [UIColor orangeColor], [UIColor greenColor]];
+    _myProgressView.popUpViewCornerRadius = 16.0;
     
-    [upManager putData:uploaddata key:filename token:token
-              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                  entity.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filename];
-                  
-                  RLMRealm *realm = [RLMRealm defaultRealm];
-                  [realm beginWriteTransaction];
-                  [realm addObject:entity];
-                  [realm commitWriteTransaction];
-                  NSLog(@"%@", info);
-                  NSLog(@"%@", resp);
-                  
-              } option:nil];
+    [self.view addSubview:_myProgressView];
+    [_myProgressView showPopUpViewAnimated:YES];
     
+//    [upManager putData:uploaddata key:filename token:token
+//              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+//                  entity.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filename];
+//                  
+//                  RLMRealm *realm = [RLMRealm defaultRealm];
+//                  [realm beginWriteTransaction];
+//                  [realm addObject:entity];
+//                  [realm commitWriteTransaction];
+//                  NSLog(@"%@", info);
+//                  NSLog(@"%@", resp);
+//                  
+//                  [myProgress showPopUpViewAnimated:NO];
+//              } option:nil];
+////    [upManager putFile:<#(NSString *)#> key:<#(NSString *)#> token:<#(NSString *)#> complete:<#^(QNResponseInfo *info, NSString *key, NSDictionary *resp)completionHandler#> option:<#(QNUploadOption *)#>]
 }
 
 
@@ -266,6 +282,31 @@
 - (void)locationManager:(CLLocationManager *)locationManager didFailWithError:(NSError *)error
 {
     
+}
+
+// Progress updated. 1.0 indicates 100%.
+- (void)uploadProgressUpdated:(NSString *)filePath percent:(float)percent
+{
+    _myProgressView.progress = percent;
+}
+
+// Upload completed successfully.
+- (void)uploadSucceeded:(NSString *)filePath ret:(NSDictionary *)ret
+{
+    
+    _myProgressView.progress = 1.0;
+    _daily.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filePath];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addObject:_daily];
+    [realm commitWriteTransaction];
+
+}
+
+// Upload failed.
+- (void)uploadFailed:(NSString *)filePath error:(NSError *)error
+{
+   
 }
 
 @end

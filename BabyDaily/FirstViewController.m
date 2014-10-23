@@ -125,6 +125,10 @@ static NSString * const kTableName = @"table";
         
         UILabel* locationInfo = (UILabel *)[cell.contentView viewWithTag:14];
         locationInfo.text = object.Location;
+        UIImageView *locationImage =(UIImageView *)[cell.contentView viewWithTag:12];
+        //locationImage = nil;
+
+        [locationImage setHidden:NO];
         
     }
     else
@@ -180,6 +184,8 @@ static NSString * const kTableName = @"table";
         {
             weatherImage.image =  [UIImage imageNamed:@"Snow"];
         }
+        
+        [weatherImage setHidden:NO];
 
     }
     else

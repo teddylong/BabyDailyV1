@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface WriteDailyViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *DText;
 @property (weak, nonatomic) IBOutlet UIButton *AddImgBtn;
