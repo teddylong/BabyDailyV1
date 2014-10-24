@@ -68,6 +68,7 @@
     //加载Body详细
     BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + 10, 320.0f, 200.0f)];
     BigText.text = daily.Body;
+    
     double height = 0.0;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         
@@ -86,37 +87,21 @@
     [scrollView addSubview:BigText];
     
     
+    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, height + 50.0f)];
+    BigText.scrollEnabled = NO;
     
-//    CGRect frame = BigText.frame;
-//    frame.size.height = BigText.contentSize.height;
-//    BigText.frame = frame;
-
-    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, height)];
+    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height + 50.0f);
     
-    
-    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height+50);
+    if(newSize.height < 568.0)
+    {
+        newSize = CGSizeMake(self.view.frame.size.width, 600.0);
+    }
     
     [scrollView setContentSize:newSize];
 
     
 }
-    //异步加载Image
-//- (void)imageLoaded:(NSNotification *)notification
-//{
-//    
-//    BigImage = notification.object;
-//    
-//    [BigImage setFrame:CGRectMake(0.0f, 0.0f, 320.0f, BigImage.image.size.height*320.0/BigImage.image.size.width)];
-//    
-//    
-//
-//    [scrollView addSubview:BigImage];
-//    [scrollView addSubview:BigText];
-//    
-//    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigText.frame.size.height+ + BigImage.frame.size.height + 50);
-//    [scrollView setContentSize:newSize];
-//    
-//}
+
 
 - (void)didReceiveMemoryWarning
 {
