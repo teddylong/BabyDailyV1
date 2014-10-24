@@ -74,7 +74,8 @@ static NSString * const kTableName = @"table";
         dailyDetail.daily = self.array[_selectedRow];
         
     }
-    self.hidesBottomBarWhenPushed = YES;
+    //self.hidesBottomBarWhenPushed = YES;
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     self.hidesBottomBarWhenPushed = NO;
@@ -160,7 +161,7 @@ static NSString * const kTableName = @"table";
         {
             weatherImage.image =  [UIImage imageNamed:@"Fog"];
         }
-        else if ([weatherInfo containsString:@"sun"])
+        else if ([weatherInfo containsString:@"Clear"])
         {
             weatherImage.image =  [UIImage imageNamed:@"Sun"];
         }
@@ -176,7 +177,7 @@ static NSString * const kTableName = @"table";
         {
             weatherImage.image =  [UIImage imageNamed:@"Hail"];
         }
-        else if ([weatherInfo containsString:@"storm"])
+        else if ([weatherInfo containsString:@"thunderstorm"])
         {
             weatherImage.image =  [UIImage imageNamed:@"Storm"];
         }

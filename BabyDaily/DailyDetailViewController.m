@@ -68,21 +68,35 @@
     //加载Body详细
     BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + 10, 320.0f, 200.0f)];
     BigText.text = daily.Body;
+    double height = 0.0;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        
+        CGRect textFrame=[[BigText layoutManager]usedRectForTextContainer:[BigText textContainer]];
+        height = textFrame.size.height;
+        
+    }else {
+        
+        height = BigText.contentSize.height;
+    }
     
     
-    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height+20);
-    
-    [scrollView setContentSize:newSize];
     
     [scrollView addSubview:BigImage];
 
     [scrollView addSubview:BigText];
     
-    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, BigText.contentSize.height)];
     
-    CGRect frame = BigText.frame;
-    frame.size.height = BigText.contentSize.height;
-    BigText.frame = frame;
+    
+//    CGRect frame = BigText.frame;
+//    frame.size.height = BigText.contentSize.height;
+//    BigText.frame = frame;
+
+    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height, 320.0f, height)];
+    
+    
+    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height+50);
+    
+    [scrollView setContentSize:newSize];
 
     
 }

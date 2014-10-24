@@ -11,7 +11,7 @@
 #import "UzysAssetsPickerController.h"
 #import "DailyOne.h"
 #import "AFNetworking.h"
-#import "QiniuSDK.h"
+
 #import "QiniuUploadDelegate.h"
 #import <MapKit/MapKit.h>
 #import "ASPopUpView.h"
@@ -44,6 +44,12 @@
      _daily = [[DailyOne alloc] init];
     _daily.Weather = @"";
     _daily.Location = @"";
+    
+    
+    _myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(10.0f, 400.0f, 300.0f, 100.0f)];
+    _myProgressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:26];
+    _myProgressView.popUpViewAnimatedColors = @[[UIColor redColor], [UIColor orangeColor], [UIColor greenColor]];
+    _myProgressView.popUpViewCornerRadius = 16.0;
     
 }
 
@@ -134,6 +140,12 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    [self letSubmitBtnGone];
+    [self.view addSubview:_myProgressView];
+    [_myProgressView showPopUpViewAnimated:YES];
+    
+    
     [manager GET:@"http://teddylong.net/qiniu/GetTokenOnce.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
 
@@ -153,7 +165,6 @@
     //上传图片并保存日记
 -(void) UploadImg:(NSData *) uploaddata: (NSString *) token: (DailyOne *) entity
 {
-    QNUploadManager *upManager = [[QNUploadManager alloc] init];
     
     QiniuSimpleUploader *newUpLoader = [QiniuSimpleUploader uploaderWithToken:token];
     newUpLoader.delegate = self;
@@ -165,28 +176,8 @@
     
     [newUpLoader uploadFileData:uploaddata key:filename extra:nil];
     
-    _myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 100.0f)];
-    _myProgressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:26];
-    _myProgressView.popUpViewAnimatedColors = @[[UIColor redColor], [UIColor orangeColor], [UIColor greenColor]];
-    _myProgressView.popUpViewCornerRadius = 16.0;
     
-    [self.view addSubview:_myProgressView];
-    [_myProgressView showPopUpViewAnimated:YES];
-    
-//    [upManager putData:uploaddata key:filename token:token
-//              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-//                  entity.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filename];
-//                  
-//                  RLMRealm *realm = [RLMRealm defaultRealm];
-//                  [realm beginWriteTransaction];
-//                  [realm addObject:entity];
-//                  [realm commitWriteTransaction];
-//                  NSLog(@"%@", info);
-//                  NSLog(@"%@", resp);
-//                  
-//                  [myProgress showPopUpViewAnimated:NO];
-//              } option:nil];
-////    [upManager putFile:<#(NSString *)#> key:<#(NSString *)#> token:<#(NSString *)#> complete:<#^(QNResponseInfo *info, NSString *key, NSDictionary *resp)completionHandler#> option:<#(QNUploadOption *)#>]
+
 }
 
 
@@ -239,7 +230,7 @@
         {
             [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Fog"] forState:UIControlStateNormal];
         }
-        else if ([weather containsString:@"sun"])
+        else if ([weather containsString:@"Clear"])
         {
             [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Sun"] forState:UIControlStateNormal];
         }
@@ -255,7 +246,7 @@
         {
             [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Hail"] forState:UIControlStateNormal];
         }
-        else if ([weather containsString:@"storm"])
+        else if ([weather containsString:@"thunderstorm"])
         {
             [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Storm"] forState:UIControlStateNormal];
         }
@@ -295,11 +286,13 @@
 {
     
     _myProgressView.progress = 1.0;
+    [_myProgressView showPopUpViewAnimated:NO];
     _daily.Image = [@"http://babydaily.qiniudn.com/" stringByAppendingString:filePath];
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [realm addObject:_daily];
     [realm commitWriteTransaction];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
 
@@ -307,6 +300,12 @@
 - (void)uploadFailed:(NSString *)filePath error:(NSError *)error
 {
    
+}
+
+-(void)letSubmitBtnGone
+{
+    UIBarButtonItem *submitBtn = self.navigationItem.rightBarButtonItem;
+    [submitBtn setEnabled:NO];
 }
 
 @end
