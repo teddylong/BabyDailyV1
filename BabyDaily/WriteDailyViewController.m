@@ -110,9 +110,12 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
     
+    NSDate *now = [NSDate date];
     
-    _daily.CreateDate = strDate;
-    _daily.UpdateDate = strDate;
+    //_daily.CreateDate = @"2014-09-01 12:00:00";
+    
+    _daily.CreateDate = now;
+    _daily.UpdateDate = now;
     //d.Weather = @"Rain";
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     _daily.UDID = idfv;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A32C619FB65210001DFCC /* TestViewController.m */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
@@ -109,6 +110,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F1A32C519FB65210001DFCC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		9F1A32C619FB65210001DFCC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
@@ -594,6 +597,8 @@
 				9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */,
 				D0FD5BC719EE2AC80068FE00 /* DailyDetailViewController.h */,
 				D0FD5BC819EE2AC80068FE00 /* DailyDetailViewController.m */,
+				9F1A32C519FB65210001DFCC /* TestViewController.h */,
+				9F1A32C619FB65210001DFCC /* TestViewController.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				D0FD5C0119EE679C0068FE00 /* UIWebView+AFNetworking.m in Sources */,
 				D013B92C19F8CE6E00DC5AA2 /* QiniuResumableUploader.m in Sources */,
 				D06B453919F0F3E300D1FE72 /* QNUserAgent.m in Sources */,
+				9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */,
 				D05C1E6519F4C63F005F6504 /* MJRefreshConst.m in Sources */,
 				D0FD5BFF19EE679C0068FE00 /* UIProgressView+AFNetworking.m in Sources */,
 				D0FD5BF319EE679C0068FE00 /* AFHTTPSessionManager.m in Sources */,

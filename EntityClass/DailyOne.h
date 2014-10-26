@@ -12,13 +12,13 @@
 @interface DailyOne : RLMObject
 
 @property NSString *ID;
-@property NSString *CreateDate;
+@property NSDate *CreateDate;
 @property NSString *User;
 @property NSString *Body;
 @property NSString *Weather;
 @property NSString *Image;
 @property NSString *Location;
-@property NSString *UpdateDate;
+@property NSDate *UpdateDate;
 @property NSString *Tag;
 @property NSString *UDID;
 //@property NSInteger *Publish;
