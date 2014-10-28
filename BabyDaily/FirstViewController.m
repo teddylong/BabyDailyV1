@@ -178,9 +178,6 @@ static NSString * const kTableName = @"table";
         NSString *weatherInfo = [object.Weather componentsSeparatedByString:@","][0];
         NSString *tempInfo = [object.Weather componentsSeparatedByString:@","][1];
         
-//        UILabel* weatherInfoLable = (UILabel *)[cell.contentView viewWithTag:8];
-//        weatherInfoLable.text = weatherInfo;
-        
         UILabel* tempInfoLabel = (UILabel *)[cell.contentView viewWithTag:6];
         tempInfoLabel.text = tempInfo;
         
@@ -253,12 +250,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [realm commitWriteTransaction];
     }
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 110;
-//}
-
-#pragma mark - Actions
 
 - (void)reloadData
 {
@@ -266,7 +257,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [self.tableView reloadData];
 }
 
-// // // //
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0)
     {

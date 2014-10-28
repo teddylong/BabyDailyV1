@@ -130,6 +130,8 @@
         [realm beginWriteTransaction];
         [realm addObject:_daily];
         [realm commitWriteTransaction];
+        
+        [self PostDailyToWebServer:_daily];
     }
     else
     {
@@ -295,6 +297,9 @@
     [realm beginWriteTransaction];
     [realm addObject:_daily];
     [realm commitWriteTransaction];
+    // post to server
+    [self PostDailyToWebServer:_daily];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
@@ -309,6 +314,28 @@
 {
     UIBarButtonItem *submitBtn = self.navigationItem.rightBarButtonItem;
     [submitBtn setEnabled:NO];
+}
+
+-(void)PostDailyToWebServer:(DailyOne *)entity
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"User": entity.User,
+                                 @"Body": entity.Body,
+                                 @"CreateTime": entity.CreateDate,
+                                 @"ImageAddress": entity.Image,
+                                 @"Location": entity.Location,
+                                 @"Tag": entity.Tag,
+                                 @"UDID": entity.UDID,
+                                 @"UpdateTime": entity.UpdateDate,
+                                 @"Weather": entity.Weather};
+
+    [manager POST:@"http://teddylong.net/BabyDaily/QueryEntity.php" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 @end

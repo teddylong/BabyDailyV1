@@ -79,6 +79,7 @@
 		D091310319EBDAEF0086C423 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091310219EBDAEF0086C423 /* Images.xcassets */; };
 		D091310619EBDAEF0086C423 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091310419EBDAEF0086C423 /* LaunchScreen.xib */; };
 		D091311219EBDAEF0086C423 /* BabyDailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091311119EBDAEF0086C423 /* BabyDailyTests.m */; };
+		D099709E19FF2C07005030EC /* LookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D099709D19FF2C07005030EC /* LookViewController.m */; };
 		D0FD5BC919EE2AC80068FE00 /* DailyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FD5BC819EE2AC80068FE00 /* DailyDetailViewController.m */; };
 		D0FD5BF119EE679C0068FE00 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FD5BCD19EE679C0068FE00 /* AFHTTPRequestOperation.m */; };
 		D0FD5BF219EE679C0068FE00 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FD5BCF19EE679C0068FE00 /* AFHTTPRequestOperationManager.m */; };
@@ -254,6 +255,8 @@
 		D091310B19EBDAEF0086C423 /* BabyDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabyDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D091311019EBDAEF0086C423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D091311119EBDAEF0086C423 /* BabyDailyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BabyDailyTests.m; sourceTree = "<group>"; };
+		D099709C19FF2C07005030EC /* LookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookViewController.h; sourceTree = "<group>"; };
+		D099709D19FF2C07005030EC /* LookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookViewController.m; sourceTree = "<group>"; };
 		D0FD5BC719EE2AC80068FE00 /* DailyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDetailViewController.h; sourceTree = "<group>"; };
 		D0FD5BC819EE2AC80068FE00 /* DailyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDetailViewController.m; sourceTree = "<group>"; };
 		D0FD5BCC19EE679C0068FE00 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -599,6 +602,8 @@
 				D0FD5BC819EE2AC80068FE00 /* DailyDetailViewController.m */,
 				9F1A32C519FB65210001DFCC /* TestViewController.h */,
 				9F1A32C619FB65210001DFCC /* TestViewController.m */,
+				D099709C19FF2C07005030EC /* LookViewController.h */,
+				D099709D19FF2C07005030EC /* LookViewController.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -810,6 +815,7 @@
 				D06B453919F0F3E300D1FE72 /* QNUserAgent.m in Sources */,
 				9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */,
 				D05C1E6519F4C63F005F6504 /* MJRefreshConst.m in Sources */,
+				D099709E19FF2C07005030EC /* LookViewController.m in Sources */,
 				D0FD5BFF19EE679C0068FE00 /* UIProgressView+AFNetworking.m in Sources */,
 				D0FD5BF319EE679C0068FE00 /* AFHTTPSessionManager.m in Sources */,
 				D07144A719ECFF9B001AD540 /* Daily.m in Sources */,
