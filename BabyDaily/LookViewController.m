@@ -69,17 +69,20 @@
 
         
         NSDate *now2 = daily.CreateDate;
-        NSDateFormatter *format = [[NSDateFormatter alloc]init];
-        [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        
+
+
         
         UILabel* dailyDateLabel = (UILabel *)[cell.contentView viewWithTag:2];
-        dailyDateLabel.text = [format stringFromDate:now2];
+
+        dailyDateLabel.text = (NSString *)now2;
         
         
         
         UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:100];
         NSString *tempString = [daily.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
+        CALayer *layer = [viewImage layer];
+        [layer setMasksToBounds:YES];
+        [layer setCornerRadius:5.0f];
         
         [viewImage sd_setImageWithURL:[[NSURL alloc] initWithString: tempString]];
     }

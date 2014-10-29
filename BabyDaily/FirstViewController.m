@@ -42,7 +42,9 @@ static NSString * const kTableName = @"table";
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
     
-    //self.tableView.separatorColor = [UIColor colorWithRed:52.0f/255.0f green:53.0f/255.0f blue:61.0f/255.0f alpha:1];
+    UIImage *logoImage = [UIImage imageNamed:@"Logo"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+
     
     // Set realm notification block
     __weak typeof(self) weakSelf = self;
@@ -232,7 +234,11 @@ static NSString * const kTableName = @"table";
 
     UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:100];
     NSString *tempString = [object.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
-        
+    
+    CALayer *layer = [viewImage layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:5.0f];
+    
     [viewImage sd_setImageWithURL:[[NSURL alloc] initWithString: tempString]];
         
     
