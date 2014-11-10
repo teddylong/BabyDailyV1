@@ -134,7 +134,11 @@
         [realm addObject:_daily];
         [realm commitWriteTransaction];
         
-        [self PostDailyToWebServer:_daily];
+        if(_isPublished)
+        {
+            [self PostDailyToWebServer:_daily];
+        }
+
     }
     else
     {
