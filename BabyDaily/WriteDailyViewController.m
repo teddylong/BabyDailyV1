@@ -350,8 +350,15 @@
 
 - (IBAction)ClickPublish:(id)sender {
     
-    _isPublished = YES;
-    //[PublishBtn setImage:[UIImage imageNamed:@"Published"]];
-    [PublishBtn setImage:[UIImage imageNamed:@"Published"] forState:UIControlStateNormal];
+    if(_isPublished)
+    {
+        _isPublished = NO;
+        [PublishBtn setImage:[UIImage imageNamed:@"Publish"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        _isPublished = YES;
+        [PublishBtn setImage:[UIImage imageNamed:@"Published"] forState:UIControlStateNormal];
+    }
 }
 @end

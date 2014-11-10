@@ -289,7 +289,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 25.0f;
+    return 20.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -314,7 +314,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     headerView.text = headerViweTitle;
     headerView.textAlignment = NSTextAlignmentCenter;
-    headerView.font = [UIFont boldSystemFontOfSize:18.0f];
+    headerView.font = [UIFont boldSystemFontOfSize:17.0f];
     headerView.textColor = [UIColor whiteColor];
     headerView.backgroundColor = [self colorWithHexString:@"75A5FF"];
     
