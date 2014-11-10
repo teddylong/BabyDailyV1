@@ -21,4 +21,6 @@
 - (IBAction)GetLocationWeather:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *GetWeatherBtn;
 @property(nonatomic, weak) NSString *AllToken;
+- (IBAction)ClickPublish:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *PublishBtn;
 @end

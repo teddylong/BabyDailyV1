@@ -67,15 +67,25 @@
         UILabel* bodyLabel = (UILabel *)[cell.contentView viewWithTag:1];
         bodyLabel.text = daily.Body;
 
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         
         NSDate *now2 = daily.CreateDate;
-
+        NSString *tempTime = (NSString *)now2;
+        NSDate *now3 = [dateFormatter dateFromString:tempTime];
+        
+        NSTimeZone *zone = [NSTimeZone systemTimeZone];
+        NSInteger interval = [zone secondsFromGMTForDate: now3];
+        NSDate *localeDate = [now3 dateByAddingTimeInterval: interval];
+        
+        
+        NSString *realLocalDate = [dateFormatter stringFromDate:localeDate];
 
         
         UILabel* dailyDateLabel = (UILabel *)[cell.contentView viewWithTag:2];
 
-        dailyDateLabel.text = (NSString *)now2;
-        
+        dailyDateLabel.text = realLocalDate;
+        //dailyDateLabel.text = dailyDateString;
         
         
         UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:100];

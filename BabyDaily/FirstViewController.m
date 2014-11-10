@@ -25,6 +25,7 @@ static NSString * const kTableName = @"table";
 @property (nonatomic, strong) RLMNotificationToken *notification;
 @property (nonatomic, strong) NSMutableDictionary *sectionDaily;
 @property (nonatomic,strong) NSMutableArray *dailys;
+@property (nonatomic,strong) NSIndexPath *localPath;
 
 @end
 
@@ -37,6 +38,7 @@ static NSString * const kTableName = @"table";
     self.tableView.dataSource = self;
     
     _sectionDaily = [[NSMutableDictionary alloc]init];
+    _localPath = [[NSIndexPath alloc] init];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
@@ -77,7 +79,12 @@ static NSString * const kTableName = @"table";
     if([segue.identifier isEqualToString:@"goDetail"])
     {
         DailyDetailViewController *dailyDetail = segue.destinationViewController;
-        dailyDetail.daily = self.array[_selectedRow];
+        
+        NSInteger section = _localPath.section;
+        NSInteger row = _localPath.row;
+        
+        dailyDetail.daily = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
+        //dailyDetail.daily = self.array[_selectedRow];
         
     }
     //self.hidesBottomBarWhenPushed = YES;
@@ -90,7 +97,7 @@ static NSString * const kTableName = @"table";
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _selectedRow = [indexPath row];
+    _localPath = indexPath;
     return indexPath;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -364,10 +371,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     
     comps = [calendar components:unitFlags fromDate:now];
-    
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:0];
     
     [comps setDay:([comps day] - ([comps day] -1))];
+
     NSDate *thisMonth = [calendar dateFromComponents:comps];
+    
     
     [comps setMonth:([comps month] - 3)];
     NSDate *lastThreeMonth = [calendar dateFromComponents:comps];
@@ -383,7 +394,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     if(section == 0)
     {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate > %@",thisMonth];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate >= %@",thisMonth];
         
         RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
         
@@ -392,7 +403,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (section ==1)
     {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate > %@",thisMonth,lastThreeMonth];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",thisMonth,lastThreeMonth];
         
         RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
         
@@ -401,7 +412,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (section ==2)
     {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate > %@",lastThreeMonth,lastSixMonth];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",lastThreeMonth,lastSixMonth];
         
         RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
         

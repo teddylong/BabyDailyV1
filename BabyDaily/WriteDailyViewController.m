@@ -26,6 +26,8 @@
 @property (assign, nonatomic) UIImage *willUploadImage;
 @property (nonatomic, strong) DailyOne *daily;
 @property (nonatomic) ASProgressPopUpView* myProgressView;
+@property (nonatomic) BOOL isPublished;
+
 
 @end
 
@@ -33,6 +35,7 @@
 
 @synthesize strTtile;
 @synthesize AllToken;
+@synthesize PublishBtn;
 
 - (void)viewDidLoad {
     
@@ -42,6 +45,7 @@
     [self.DailyBody becomeFirstResponder];
     
      _daily = [[DailyOne alloc] init];
+    _isPublished = NO;
     _daily.Weather = @"";
     _daily.Location = @"";
     
@@ -112,15 +116,14 @@
     
     NSDate *now = [NSDate date];
     
-    //_daily.CreateDate = @"2014-09-01 12:00:00";
     
     _daily.CreateDate = now;
     _daily.UpdateDate = now;
-    //d.Weather = @"Rain";
+
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     _daily.UDID = idfv;
     _daily.Body = self.DailyBody.text;
-    //d.Location = @"SH";
+
     _daily.Tag = @"";
     if( self.willUploadImage == nil)
     {
@@ -298,7 +301,10 @@
     [realm addObject:_daily];
     [realm commitWriteTransaction];
     // post to server
-    [self PostDailyToWebServer:_daily];
+    if(_isPublished)
+    {
+        [self PostDailyToWebServer:_daily];
+    }
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 
@@ -338,4 +344,10 @@
     }];
 }
 
+- (IBAction)ClickPublish:(id)sender {
+    
+    _isPublished = YES;
+    //[PublishBtn setImage:[UIImage imageNamed:@"Published"]];
+    [PublishBtn setImage:[UIImage imageNamed:@"Published"] forState:UIControlStateNormal];
+}
 @end
