@@ -33,15 +33,14 @@
 
 @implementation WriteDailyViewController
 
-@synthesize strTtile;
+
 @synthesize AllToken;
 @synthesize PublishBtn;
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    //调试信息
-    self.DText.text = strTtile;
+
     [self.DailyBody becomeFirstResponder];
     
      _daily = [[DailyOne alloc] init];
@@ -50,8 +49,9 @@
     _daily.Location = @"";
     
     
-    _myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(10.0f, 400.0f, 300.0f, 100.0f)];
-    _myProgressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:26];
+    //_myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(10.0f, 400.0f, 300.0f, 100.0f)];
+    _myProgressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(0.0f, 65.0f, 320.0f, 10.0f)];
+    //_myProgressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:26];
     _myProgressView.popUpViewAnimatedColors = @[[UIColor redColor], [UIColor orangeColor], [UIColor greenColor]];
     _myProgressView.popUpViewCornerRadius = 16.0;
     
@@ -59,11 +59,14 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-    //点击增加一张图片
+//点击增加一张图片
 - (IBAction)AddImg:(id)sender {
+    
+    //取消textbox的第一响应
+    [self.DailyBody resignFirstResponder];
+    //启动Image Picker
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.delegate = self;
     picker.maximumNumberOfSelectionVideo = 0;
@@ -72,7 +75,7 @@
         
     }];
 }
-    //显示手机中照片集
+//显示手机中照片集
 - (void)UzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
     self.upLoadImg.backgroundColor = [UIColor clearColor];
@@ -85,34 +88,31 @@
             
             UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullScreenImage];
             //weakSelf.upLoadImg.frame = CGRectMake(100.0f, 237.0f, 320.0f, img.size.height*320.0/img.size.width);
-            
+            [weakSelf.DailyBody becomeFirstResponder];
             
             weakSelf.willUploadImage = img;
             
-            
             [weakSelf.AddImgBtn setBackgroundImage:img forState:UIControlStateNormal];
-            
-            
+            [weakSelf.AddImgBtn setFrame:CGRectMake(45, 285, 50, 25)];
             *stop = YES;
         }];
-        
-        
     }
-    
+    //textbox获取第一响应，弹出键盘
+    BOOL isFirst = [weakSelf.DailyBody canBecomeFirstResponder];
+    if(isFirst)
+    {
+        [weakSelf.DailyBody becomeFirstResponder];
+    }
 }
 
-
-    //点击保存日记
+//点击保存日记
 - (IBAction)SaveDaily:(id)sender {
-    
-   
     
     _daily.User = @"Teddy";
     _daily.ID = @"1";
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
     
     NSDate *now = [NSDate date];
     
@@ -187,8 +187,6 @@
     NSString *filename = [stringFromDate stringByAppendingString:@".png"];
     
     [newUpLoader uploadFileData:uploaddata key:filename extra:nil];
-    
-    
 
 }
 
@@ -237,6 +235,9 @@
         
         _daily.Weather = [[[weather stringByAppendingString:@","] stringByAppendingString:[@(convertedValue) stringValue]] stringByAppendingString:@"°"];
         _daily.Location = [[country stringByAppendingString:@","] stringByAppendingString:city];
+        
+        UILabel *tempLabel = (UILabel *)[self.view viewWithTag:14];
+        tempLabel.text = [[@(convertedValue) stringValue] stringByAppendingString:@"°"];
         
         if([weather containsString:@"mist"])
         {
@@ -324,6 +325,10 @@
 {
     UIBarButtonItem *submitBtn = self.navigationItem.rightBarButtonItem;
     [submitBtn setEnabled:NO];
+    UIBarButtonItem *backBtn = self.navigationItem.backBarButtonItem;
+    [backBtn setEnabled:NO];
+    UIBarButtonItem *leftBtn = self.navigationItem.leftBarButtonItem;
+    [leftBtn setEnabled:NO];
 }
 
 -(void)PostDailyToWebServer:(DailyOne *)entity
@@ -360,5 +365,9 @@
         _isPublished = YES;
         [PublishBtn setImage:[UIImage imageNamed:@"Published"] forState:UIControlStateNormal];
     }
+}
+
+- (IBAction)BackToRoot:(id)sender {
+     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

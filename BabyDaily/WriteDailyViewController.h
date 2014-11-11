@@ -16,11 +16,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *upLoadImg;
 - (IBAction)SaveDaily:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *DailyBody;
-@property(nonatomic,weak)NSString *strTtile;
+
 
 - (IBAction)GetLocationWeather:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *GetWeatherBtn;
 @property(nonatomic, weak) NSString *AllToken;
 - (IBAction)ClickPublish:(id)sender;
+- (IBAction)BackToRoot:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *PublishBtn;
 @end

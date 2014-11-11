@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TestViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface TestViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *mySerarchBar;
 
 @end

@@ -15,11 +15,15 @@
 @interface LookViewController ()
 
 @property (nonatomic, strong) NSMutableArray *array;
+
+
 @property (assign, nonatomic) NSInteger selectedRow;
 
 @end
 
 @implementation LookViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,7 +107,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+   
     return _array.count;
+    
 }
 
 - (void)LoadDailys

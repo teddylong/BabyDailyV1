@@ -41,7 +41,7 @@ static NSString * const kTableName = @"table";
     _localPath = [[NSIndexPath alloc] init];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    //[self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
     
     UIImage *logoImage = [UIImage imageNamed:@"Logo"];
@@ -62,12 +62,12 @@ static NSString * const kTableName = @"table";
     [super didReceiveMemoryWarning];
 }
 
-- (void)headerRereshing
-{
-    [self reloadData];
-    [self.tableView headerEndRefreshing];
-    
-}
+//- (void)headerRereshing
+//{
+//    [self reloadData];
+//    [self.tableView headerEndRefreshing];
+//    
+//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -84,10 +84,9 @@ static NSString * const kTableName = @"table";
         NSInteger row = _localPath.row;
         
         dailyDetail.daily = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
-        //dailyDetail.daily = self.array[_selectedRow];
         
     }
-    //self.hidesBottomBarWhenPushed = YES;
+
     [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -116,14 +115,13 @@ static NSString * const kTableName = @"table";
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     
-    //DailyOne *object = self.array[indexPath.row];
+
     DailyOne *object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
     
     UILabel* bodyLabel = (UILabel *)[cell.contentView viewWithTag:1];
     bodyLabel.text = object.Body;
     
-    //NSString *dailyDate = [object.CreateDate componentsSeparatedByString:@" "][0];
-    //NSString *dailyTime = [object.CreateDate componentsSeparatedByString:@" "][1];
+
     
     NSDate *now2 = object.CreateDate;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -139,7 +137,6 @@ static NSString * const kTableName = @"table";
     
     
     
-    //NSString *dailyDateOnlyDay = [dailyDate componentsSeparatedByString:@"-"][2];
     NSString *dailyTimeNoS = @"";
     if(dailyMin < 10)
     {
