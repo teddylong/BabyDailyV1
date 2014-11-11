@@ -144,13 +144,9 @@ bool isSearch;
                                       reuseIdentifier:@"TestCell"];
     }
     
-    
-    //DailyOne *object = [[DailyOne alloc]init];
-    
     if(isSearch)
     {
         DailyOne *object = [_searchArray objectAtIndex:row];
-        //object = [_searchArray objectAtIndex:row];
         cell.textLabel.text = object.Body;
     }
     else
@@ -158,7 +154,7 @@ bool isSearch;
         DailyOne *object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
         cell.textLabel.text = object.Body;
     }
-    //cell.textLabel.text = object.Body;
+    
     
     return cell;
 }

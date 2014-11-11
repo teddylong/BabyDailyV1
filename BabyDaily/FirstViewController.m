@@ -21,8 +21,6 @@ static NSString * const kTableName = @"table";
 @interface FirstViewController ()
 
 @property (nonatomic, strong) RLMArray *array;
-@property (nonatomic, strong) RLMArray *searchArray;
-
 @property (assign, nonatomic) NSInteger selectedRow;
 @property (nonatomic, strong) RLMNotificationToken *notification;
 @property (nonatomic, strong) NSMutableDictionary *sectionDaily;
@@ -33,8 +31,6 @@ static NSString * const kTableName = @"table";
 
 @implementation FirstViewController
 
-bool isSearch;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -44,16 +40,13 @@ bool isSearch;
     _sectionDaily = [[NSMutableDictionary alloc]init];
     _localPath = [[NSIndexPath alloc] init];
     
-    //设置table每行间隔样式
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
+    //[self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-    //设置Nav Logo图片
+    
     UIImage *logoImage = [UIImage imageNamed:@"Logo"];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
-    //设置searchBar位置，以及开始隐藏search Bar
-    self.tableView.tableHeaderView = self.mySearchBar;
-    [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
+
     
     // Set realm notification block
     __weak typeof(self) weakSelf = self;
@@ -69,6 +62,12 @@ bool isSearch;
     [super didReceiveMemoryWarning];
 }
 
+//- (void)headerRereshing
+//{
+//    [self reloadData];
+//    [self.tableView headerEndRefreshing];
+//    
+//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -116,21 +115,8 @@ bool isSearch;
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     
-    DailyOne *object = [[DailyOne alloc]init];
-    
-    if(isSearch)
-    {
-        //NSLog(@"%lu",(unsigned long)_searchArray.count);
-        object = [_searchArray objectAtIndex:row];
-        cell.textLabel.text = object.Body;
-        return cell;
-        //NSLog(object.Body);
-        
-    }
-    else
-    {
-        object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
-    }
+
+    DailyOne *object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
     
     UILabel* bodyLabel = (UILabel *)[cell.contentView viewWithTag:1];
     bodyLabel.text = object.Body;
@@ -299,16 +285,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         return @"半年之前";
     }
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if(isSearch)
-    {
-        return 0;
-    }
-    else
-    {
-        return 20.0f;
-    }
+    return 20.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -340,15 +318,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     return headerView;
 }
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if(isSearch)
-    {
-        return 1;
-    }
-    else
-    {
-        return 4;
-    }
+    return 4;
 }
 
 -(UIColor*)colorWithHexString:(NSString*)hex
@@ -389,98 +361,72 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(isSearch)
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    
+    comps = [calendar components:unitFlags fromDate:now];
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:0];
+    
+    [comps setDay:([comps day] - ([comps day] -1))];
+
+    NSDate *thisMonth = [calendar dateFromComponents:comps];
+    
+    
+    [comps setMonth:([comps month] - 3)];
+    NSDate *lastThreeMonth = [calendar dateFromComponents:comps];
+    
+    [comps setMonth:([comps month] - 3)];
+    NSDate *lastSixMonth = [calendar dateFromComponents:comps];
+    
+    
+    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //    [formatter setDateFormat:@"yyyy-MM-dd"];
+    //    NSDate *dayOneOfMonth = [formatter dateFromString:currentMonthString];
+    
+    
+    if(section == 0)
     {
-        return _searchArray.count;
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate >= %@",thisMonth];
+        
+        RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
+        
+        [_sectionDaily setValue:sectionCurrect forKey:@"0"];
+        return sectionCurrect.count;
+    }
+    if (section ==1)
+    {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",thisMonth,lastThreeMonth];
+        
+        RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
+        
+        [_sectionDaily setValue:sectionCurrect forKey:@"1"];
+        return sectionCurrect.count;
+    }
+    if (section ==2)
+    {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",lastThreeMonth,lastSixMonth];
+        
+        RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
+        
+        [_sectionDaily setValue:sectionCurrect forKey:@"2"];
+        
+        return sectionCurrect.count;
     }
     else
     {
-        NSDate *now = [NSDate date];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        NSDateComponents *comps = [[NSDateComponents alloc] init];
-        NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@",lastSixMonth];
         
+        RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
         
-        comps = [calendar components:unitFlags fromDate:now];
-        [comps setHour:0];
-        [comps setMinute:0];
-        [comps setSecond:0];
+        [_sectionDaily setValue:sectionCurrect forKey:@"3"];
         
-        [comps setDay:([comps day] - ([comps day] -1))];
-
-        NSDate *thisMonth = [calendar dateFromComponents:comps];
-        
-        
-        [comps setMonth:([comps month] - 3)];
-        NSDate *lastThreeMonth = [calendar dateFromComponents:comps];
-        
-        [comps setMonth:([comps month] - 3)];
-        NSDate *lastSixMonth = [calendar dateFromComponents:comps];
-        
-        
-        if(section == 0)
-        {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate >= %@",thisMonth];
-            
-            RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
-            
-            [_sectionDaily setValue:sectionCurrect forKey:@"0"];
-            return sectionCurrect.count;
-        }
-        if (section ==1)
-        {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",thisMonth,lastThreeMonth];
-            
-            RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
-            
-            [_sectionDaily setValue:sectionCurrect forKey:@"1"];
-            return sectionCurrect.count;
-        }
-        if (section ==2)
-        {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@ and CreateDate >= %@",lastThreeMonth,lastSixMonth];
-            
-            RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
-            
-            [_sectionDaily setValue:sectionCurrect forKey:@"2"];
-            
-            return sectionCurrect.count;
-        }
-        else
-        {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"CreateDate < %@",lastSixMonth];
-            
-            RLMArray *sectionCurrect = [[DailyOne objectsWithPredicate:pred] arraySortedByProperty:@"CreateDate" ascending:NO];
-            
-            [_sectionDaily setValue:sectionCurrect forKey:@"3"];
-            
-            return sectionCurrect.count;
-        }
+        return sectionCurrect.count;
     }
     
-}
-
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    isSearch = NO;
-}
-
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self filterBySubstring:searchText];
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self filterBySubstring:searchBar.text];
-    [searchBar resignFirstResponder];
-}
-
--(void)filterBySubstring:(NSString *)subStr
-{
-    isSearch = YES;
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"Body contains %@",subStr];
-    _searchArray = [_array objectsWithPredicate:pred];
-    //NSLog(@"%d",_searchArray.count);
 }
 @end
