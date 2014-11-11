@@ -10,6 +10,7 @@
 		9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A32C619FB65210001DFCC /* TestViewController.m */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
+		9FBA0FE71A125D480032BD34 /* MyResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
 		D013B91319F8B4AE00DC5AA2 /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */; };
@@ -116,6 +117,8 @@
 		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
+		9FBA0FE51A125D480032BD34 /* MyResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyResultTableViewController.h; sourceTree = "<group>"; };
+		9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyResultTableViewController.m; sourceTree = "<group>"; };
 		9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		D00E0F4F19F1149E00BD072E /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
@@ -604,6 +607,8 @@
 				9F1A32C619FB65210001DFCC /* TestViewController.m */,
 				D099709C19FF2C07005030EC /* LookViewController.h */,
 				D099709D19FF2C07005030EC /* LookViewController.m */,
+				9FBA0FE51A125D480032BD34 /* MyResultTableViewController.h */,
+				9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */,
 				D07144A019ECED05001AD540 /* UzysWrapperPickerController.m in Sources */,
 				D06B453519F0F3E300D1FE72 /* QNEtag.m in Sources */,
+				9FBA0FE71A125D480032BD34 /* MyResultTableViewController.m in Sources */,
 				D06B453719F0F3E300D1FE72 /* QNHttpManager.m in Sources */,
 				D05C1E6A19F4C63F005F6504 /* UIView+MJExtension.m in Sources */,
 				D09130F519EBDAEF0086C423 /* main.m in Sources */,

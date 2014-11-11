@@ -9,7 +9,7 @@
 #import "TestViewController.h"
 #import <Realm/Realm.h>
 #import "DailyOne.h"
-
+#import "MyResultTableViewController.h"
 
 @interface TestViewController ()
 
@@ -24,7 +24,6 @@
 
 @implementation TestViewController
 
-bool isSearch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +39,15 @@ bool isSearch;
         [weakSelf reloadData];
     }];
     
+    
+    MyResultTableViewController *resultsController = [[MyResultTableViewController alloc]init];
+    self.myUISearchDisplayController = [[UISearchController alloc]initWithSearchResultsController:resultsController];
+    self.myUISearchDisplayController.searchResultsUpdater = resultsController;
+    
+    
     self.tableView.tableHeaderView = self.mySerarchBar;
+    self.definesPresentationContext = YES;
+    
     [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
     
     [self reloadData];
@@ -55,12 +62,7 @@ bool isSearch;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(isSearch)
-    {
-        return _searchArray.count;
-    }
-    else
-    {
+    
         NSDate *now = [NSDate date];
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *comps = [[NSDateComponents alloc] init];
@@ -121,7 +123,7 @@ bool isSearch;
         
             return sectionCurrect.count;
         }
-    }
+    
 
 }
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,16 +146,10 @@ bool isSearch;
                                       reuseIdentifier:@"TestCell"];
     }
     
-    if(isSearch)
-    {
-        DailyOne *object = [_searchArray objectAtIndex:row];
-        cell.textLabel.text = object.Body;
-    }
-    else
-    {
-        DailyOne *object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
-        cell.textLabel.text = object.Body;
-    }
+    
+    DailyOne *object = [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row];
+    cell.textLabel.text = object.Body;
+    
     
     
     return cell;
@@ -185,14 +181,9 @@ bool isSearch;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if(isSearch)
-    {
-        return 0;
-    }
-    else
-    {
+    
         return 18.0f;
-    }
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -226,14 +217,9 @@ bool isSearch;
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if(isSearch)
-    {
-        return 1;
-    }
-    else
-    {
-        return 4;
-    }
+    
+    return 4;
+    
 }
 
 -(UIColor*)colorWithHexString:(NSString*)hex
@@ -274,7 +260,7 @@ bool isSearch;
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    isSearch = NO;
+    //isSearch = NO;
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -290,7 +276,7 @@ bool isSearch;
 
 -(void)filterBySubstring:(NSString *)subStr
 {
-    isSearch = YES;
+    //isSearch = YES;
     //NSPredicate* pred = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",subStr];
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"Body contains %@",subStr];
     _searchArray = [_array objectsWithPredicate:pred];

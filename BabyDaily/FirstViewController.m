@@ -56,18 +56,12 @@ static NSString * const kTableName = @"table";
     }];
     
     [self reloadData];
+    //NSLog(@"%d",_array.count);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-//- (void)headerRereshing
-//{
-//    [self reloadData];
-//    [self.tableView headerEndRefreshing];
-//    
-//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
