@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A32C619FB65210001DFCC /* TestViewController.m */; };
+		9F2F763E1A139EA700E6A76C /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2F763D1A139EA700E6A76C /* SearchResultController.m */; };
+		9F2F76401A13A7A500E6A76C /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F2F763F1A13A7A500E6A76C /* TableCell.xib */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
 		9FBA0FE71A125D480032BD34 /* MyResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */; };
@@ -114,6 +116,9 @@
 /* Begin PBXFileReference section */
 		9F1A32C519FB65210001DFCC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		9F1A32C619FB65210001DFCC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		9F2F763C1A139EA700E6A76C /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
+		9F2F763D1A139EA700E6A76C /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
+		9F2F763F1A13A7A500E6A76C /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
@@ -609,6 +614,9 @@
 				D099709D19FF2C07005030EC /* LookViewController.m */,
 				9FBA0FE51A125D480032BD34 /* MyResultTableViewController.h */,
 				9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */,
+				9F2F763C1A139EA700E6A76C /* SearchResultController.h */,
+				9F2F763D1A139EA700E6A76C /* SearchResultController.m */,
+				9F2F763F1A13A7A500E6A76C /* TableCell.xib */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -783,6 +791,7 @@
 				D05C1E6319F4C63F005F6504 /* MJRefresh.bundle in Resources */,
 				D071449C19ECED05001AD540 /* UzysAssetsPickerController.xib in Resources */,
 				D071449A19ECED05001AD540 /* UzysAssetPickerController.bundle in Resources */,
+				9F2F76401A13A7A500E6A76C /* TableCell.xib in Resources */,
 				D091310319EBDAEF0086C423 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -811,6 +820,7 @@
 				D071449D19ECED05001AD540 /* UzysAssetsViewCell.m in Sources */,
 				D054E20F19F7976E00CB95F8 /* NSData+ImageContentType.m in Sources */,
 				D05C1E6819F4C63F005F6504 /* UIScrollView+MJExtension.m in Sources */,
+				9F2F763E1A139EA700E6A76C /* SearchResultController.m in Sources */,
 				D054E21B19F7976E00CB95F8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				D0FD5BFD19EE679C0068FE00 /* UIButton+AFNetworking.m in Sources */,
 				D09130F819EBDAEF0086C423 /* AppDelegate.m in Sources */,

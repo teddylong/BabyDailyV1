@@ -14,18 +14,25 @@
 #import "AsyncImageView.h"
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
+#import "SearchResultController.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
 
-@interface FirstViewController ()
+@interface FirstViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) RLMArray *array;
+@property (nonatomic, strong) RLMArray *searchArray;
 @property (assign, nonatomic) NSInteger selectedRow;
 @property (nonatomic, strong) RLMNotificationToken *notification;
 @property (nonatomic, strong) NSMutableDictionary *sectionDaily;
 @property (nonatomic,strong) NSMutableArray *dailys;
 @property (nonatomic,strong) NSIndexPath *localPath;
+
+
+@property (nonatomic, strong) UISearchController *searchController;
+
+@property (nonatomic, strong) SearchResultController *resultsTableController;
 
 @end
 
@@ -33,7 +40,21 @@ static NSString * const kTableName = @"table";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    // Search SetUp
+    _resultsTableController = [[SearchResultController alloc] init];
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
+    self.searchController.searchResultsUpdater = self;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    self.resultsTableController.tableView.delegate = self;
+    self.searchController.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
+    
+    // Others
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -55,9 +76,25 @@ static NSString * const kTableName = @"table";
         [weakSelf reloadData];
     }];
     
+    
+    [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
     [self reloadData];
-    //NSLog(@"%d",_array.count);
 }
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"Body contains %@",searchController.searchBar.text];
+    _searchArray = [_array objectsWithPredicate:pred];
+    
+    // hand over the filtered results to our search results table
+    SearchResultController *tableController = (SearchResultController *)self.searchController.searchResultsController;
+    tableController.dailys = _searchArray;
+    [tableController.tableView reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -93,6 +130,25 @@ static NSString * const kTableName = @"table";
     _localPath = indexPath;
     return indexPath;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+
+    DailyOne *selectedDaily = (tableView == self.tableView) ?
+    [_sectionDaily valueForKey:[NSString stringWithFormat: @"%d", (int)section]][row] : self.resultsTableController.dailys[indexPath.row];
+    
+    DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
+    
+    detailViewController.daily = selectedDaily; // hand off the current product to the detail view controller
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -148,8 +204,6 @@ static NSString * const kTableName = @"table";
     UILabel* dailyTimeLabel = (UILabel *)[cell.contentView viewWithTag:4];
     dailyTimeLabel.text = dailyTimeNoS;
     
-    
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     if(![object.Location  isEqual:@""])
     {
@@ -285,7 +339,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20.0f;
+    if(tableView ==self.tableView)
+    {
+    
+        return 20.0f;
+    }
+    else
+    {
+        return 0.0f;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -427,5 +489,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         return sectionCurrect.count;
     }
     
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(tableView == self.tableView)
+    {
+        return 104;
+    }
+    else
+    {
+        return 71;
+    }
 }
 @end

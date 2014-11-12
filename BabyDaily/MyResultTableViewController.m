@@ -113,37 +113,21 @@
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"goNext"])
-    {
-        id theSegue = segue.destinationViewController;
-        [theSegue setValue:@"这里是要传递的值" forKey:@"strTtile"];
-    }
-    if([segue.identifier isEqualToString:@"goDetail"])
-    {
-        DailyDetailViewController *dailyDetail = segue.destinationViewController;
 
-        NSInteger row = _localPath.row;
-        
-        dailyDetail.daily = [_searchArray objectAtIndex:row];
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSInteger row = _localPath.row;
     
-    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
+    detailViewController.daily = [_searchArray objectAtIndex:row];
+    
+    //NSLog(detailViewController.daily.Body);
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    NSInteger row = _localPath.row;
-//    
-//    DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
-//    detailViewController.daily = [_searchArray objectAtIndex:row];
-//    
-//    [self.navigationController pushViewController:detailViewController animated:YES];
-//    
-//    // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//}
 
 /*
 // Override to support conditional editing of the table view.
