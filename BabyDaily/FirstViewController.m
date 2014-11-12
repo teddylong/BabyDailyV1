@@ -212,6 +212,11 @@ static NSString * const kTableName = @"table";
         {
             weatherImage.image =  [UIImage imageNamed:@"Snow"];
         }
+        else if ([weatherInfo containsString:@"haze"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Fog"];
+        }
+        
         
         [weatherImage setHidden:NO];
 

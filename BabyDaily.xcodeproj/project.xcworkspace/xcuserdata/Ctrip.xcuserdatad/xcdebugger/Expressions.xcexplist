@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[MyResultTableViewController updateSearchResultsForSearchController:]:MyResultTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_array.count">
+            </PersistentString>
+            <PersistentString
+               value = "_searchArray.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MyResultTableViewController tableView:cellForRowAtIndexPath:]:MyResultTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.contentView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

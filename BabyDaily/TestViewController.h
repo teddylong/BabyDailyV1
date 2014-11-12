@@ -11,7 +11,6 @@
 @interface TestViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet UISearchBar *mySerarchBar;
 @property (strong, nonatomic) IBOutlet UISearchController *myUISearchDisplayController;
 
 @end

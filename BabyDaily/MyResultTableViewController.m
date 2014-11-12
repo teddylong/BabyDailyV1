@@ -7,8 +7,18 @@
 //
 
 #import "MyResultTableViewController.h"
+#import <Realm/Realm.h>
+#import "DailyOne.h"
+#import "UIImageView+WebCache.h"
+#import "DailyDetailViewController.h"
 
 @interface MyResultTableViewController ()
+
+@property (nonatomic, strong) RLMArray *searchArray;
+@property (nonatomic, strong) RLMArray *array;
+@property (assign, nonatomic) NSInteger selectedRow;
+@property (nonatomic, strong) RLMNotificationToken *notification;
+@property (nonatomic,strong) NSIndexPath *localPath;
 
 @end
 
@@ -17,11 +27,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
+    self.array = [[DailyOne allObjects] arraySortedByProperty:@"CreateDate" ascending:NO];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //__weak typeof(self) weakSelf = self;
+    
+//    self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
+//        [weakSelf reloadData];
+//    }];
+    //[self.tableView reloadData];
+    
+    NSLog(@"%lu",(unsigned long)_array.count);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,26 +50,100 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+
+    return _searchArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"SearchCell"];
+    }
+    
+    DailyOne *object = [_searchArray objectAtIndex:indexPath.row];
+    
+    
+    NSDate *now2 = object.CreateDate;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    
+    comps = [calendar components:unitFlags fromDate:now2];
+    NSInteger dailyDate = [comps day];
+    NSString *dailyDateString = [NSString stringWithFormat:@"%d",(int)dailyDate];
+    
+    UILabel* timeLabel = (UILabel *)[cell.contentView viewWithTag:2];
+    timeLabel.text = dailyDateString;
+
+    
+    UILabel* bodyLabel = (UILabel *)[cell.contentView viewWithTag:3];
+
+    bodyLabel.text = object.Body;
+    
+    
+    UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:1];
+    NSString *tempString = [object.Image stringByAppendingString:@"?imageView2/1/w/200/h/200"];
+    
+    CALayer *layer = [viewImage layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:5.0f];
+    
+    [viewImage sd_setImageWithURL:[[NSURL alloc] initWithString: tempString]];
+    
+    //cell.textLabel.text = object.Body;
     
     return cell;
 }
-*/
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _localPath = indexPath;
+    return indexPath;
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"goNext"])
+    {
+        id theSegue = segue.destinationViewController;
+        [theSegue setValue:@"这里是要传递的值" forKey:@"strTtile"];
+    }
+    if([segue.identifier isEqualToString:@"goDetail"])
+    {
+        DailyDetailViewController *dailyDetail = segue.destinationViewController;
+
+        NSInteger row = _localPath.row;
+        
+        dailyDetail.daily = [_searchArray objectAtIndex:row];
+    }
+    
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    NSInteger row = _localPath.row;
+//    
+//    DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
+//    detailViewController.daily = [_searchArray objectAtIndex:row];
+//    
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//    
+//    // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//}
 
 /*
 // Override to support conditional editing of the table view.
@@ -96,5 +188,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"Body contains %@",searchController.searchBar.text];
+    _searchArray = [_array objectsWithPredicate:pred];
+    
+    [self.tableView reloadData];
+}
 
 @end

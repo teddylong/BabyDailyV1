@@ -40,13 +40,16 @@
     }];
     
     
-    MyResultTableViewController *resultsController = [[MyResultTableViewController alloc]init];
+      
+    MyResultTableViewController *resultsController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MyResultTableViewController"];
     self.myUISearchDisplayController = [[UISearchController alloc]initWithSearchResultsController:resultsController];
     self.myUISearchDisplayController.searchResultsUpdater = resultsController;
     
-    
-    self.tableView.tableHeaderView = self.mySerarchBar;
+    UISearchBar* bar = self.myUISearchDisplayController.searchBar;
+    [bar sizeToFit];
+    self.tableView.tableHeaderView = self.myUISearchDisplayController.searchBar;
     self.definesPresentationContext = YES;
+
     
     [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
     

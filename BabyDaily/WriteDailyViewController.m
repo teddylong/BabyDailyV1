@@ -267,6 +267,10 @@
         {
             [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Snow"] forState:UIControlStateNormal];
         }
+        else if ([weather containsString:@"haze"])
+        {
+            [self.GetWeatherBtn setBackgroundImage:[UIImage imageNamed:@"Fog"] forState:UIControlStateNormal];
+        }
         
         
         
@@ -318,7 +322,8 @@
 // Upload failed.
 - (void)uploadFailed:(NSString *)filePath error:(NSError *)error
 {
-   
+    //NSLog(error.description);
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)letSubmitBtnGone
