@@ -10,6 +10,7 @@
 #import "DailyDetailViewController.h"
 //#import "PAImageView.h"
 #import "AsyncImageView.h"
+#import "EditDailyViewController.h"
 
 
 
@@ -26,6 +27,19 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"goEdit"])
+    {
+        EditDailyViewController *editDaily = segue.destinationViewController;
+        
+        editDaily.daily = daily;
+        
+    }
+    
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 
 

@@ -25,6 +25,7 @@
 		D013B92B19F8CE6E00DC5AA2 /* QiniuResumableClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92119F8CE6E00DC5AA2 /* QiniuResumableClient.m */; };
 		D013B92C19F8CE6E00DC5AA2 /* QiniuResumableUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92319F8CE6E00DC5AA2 /* QiniuResumableUploader.m */; };
 		D013B92D19F8CE6E00DC5AA2 /* QiniuUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B92719F8CE6E00DC5AA2 /* QiniuUtils.m */; };
+		D01C8FCF1A1461820046A5A5 /* EditDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01C8FCE1A1461820046A5A5 /* EditDailyViewController.m */; };
 		D027E9B319ED29D0007A3EB9 /* DailyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D027E9B219ED29D0007A3EB9 /* DailyOne.m */; };
 		D054E20E19F7976E00CB95F8 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D054E1EE19F7976E00CB95F8 /* MKAnnotationView+WebCache.m */; };
 		D054E20F19F7976E00CB95F8 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D054E1F019F7976E00CB95F8 /* NSData+ImageContentType.m */; };
@@ -149,6 +150,8 @@
 		D013B92519F8CE6E00DC5AA2 /* QiniuUploadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuUploadDelegate.h; sourceTree = "<group>"; };
 		D013B92619F8CE6E00DC5AA2 /* QiniuUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuUtils.h; sourceTree = "<group>"; };
 		D013B92719F8CE6E00DC5AA2 /* QiniuUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuUtils.m; sourceTree = "<group>"; };
+		D01C8FCD1A1461820046A5A5 /* EditDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDailyViewController.h; sourceTree = "<group>"; };
+		D01C8FCE1A1461820046A5A5 /* EditDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDailyViewController.m; sourceTree = "<group>"; };
 		D027E9B119ED29D0007A3EB9 /* DailyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyOne.h; sourceTree = "<group>"; };
 		D027E9B219ED29D0007A3EB9 /* DailyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyOne.m; sourceTree = "<group>"; };
 		D054E1ED19F7976E00CB95F8 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -617,6 +620,8 @@
 				9F2F763C1A139EA700E6A76C /* SearchResultController.h */,
 				9F2F763D1A139EA700E6A76C /* SearchResultController.m */,
 				9F2F763F1A13A7A500E6A76C /* TableCell.xib */,
+				D01C8FCD1A1461820046A5A5 /* EditDailyViewController.h */,
+				D01C8FCE1A1461820046A5A5 /* EditDailyViewController.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -873,6 +878,7 @@
 				D09130F519EBDAEF0086C423 /* main.m in Sources */,
 				D054E21719F7976E00CB95F8 /* UIButton+WebCache.m in Sources */,
 				D071449E19ECED05001AD540 /* UzysGroupPickerView.m in Sources */,
+				D01C8FCF1A1461820046A5A5 /* EditDailyViewController.m in Sources */,
 				D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */,
 				D071449F19ECED05001AD540 /* UzysGroupViewCell.m in Sources */,
 				D0FD5BF519EE679C0068FE00 /* AFSecurityPolicy.m in Sources */,

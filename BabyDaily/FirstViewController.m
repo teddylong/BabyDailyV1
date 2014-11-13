@@ -142,11 +142,22 @@ static NSString * const kTableName = @"table";
     DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
     
     detailViewController.daily = selectedDaily; // hand off the current product to the detail view controller
+
     
+//    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editDaily)];
+//    
+//    
+//    detailViewController.navigationItem.rightBarButtonItem = editBtn;
+    
+    [detailViewController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
-    // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+-(void)editDaily
+{
+    NSLog(@"asd");
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

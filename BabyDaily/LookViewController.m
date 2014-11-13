@@ -114,6 +114,7 @@
 
 - (void)LoadDailys
 {
+    [_array removeAllObjects];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
