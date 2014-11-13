@@ -11,6 +11,7 @@
 #import "DailyOne.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "DailyDetailViewController.h"
 
 @interface LookViewController ()
 
@@ -51,6 +52,25 @@
     _selectedRow = [indexPath row];
     return indexPath;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DailyOne *selectedDaily = [_array objectAtIndex:indexPath.row];
+    
+    DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
+    
+    detailViewController.daily = selectedDaily;
+    
+    
+    //    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editDaily)];
+    //
+    //
+    detailViewController.navigationItem.rightBarButtonItem = nil;
+    
+    [detailViewController setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LookCell"];
