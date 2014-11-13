@@ -27,6 +27,7 @@
 @property (nonatomic, strong) DailyOne *daily;
 @property (nonatomic) ASProgressPopUpView* myProgressView;
 @property (nonatomic) BOOL isPublished;
+@property (nonatomic, strong) NSMutableData* receiveData;
 
 
 @end
@@ -150,18 +151,24 @@
     //取得七牛空间Token
 - (void)getToken:(DailyOne *) entity
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSURL *url = [NSURL URLWithString:@"http://teddylong.net/qiniu/GetTokenOnce.php"];
+
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
     
     [self letSubmitBtnGone];
     [self.view addSubview:_myProgressView];
     [_myProgressView showPopUpViewAnimated:YES];
     
-    
-    [manager GET:@"http://teddylong.net/qiniu/GetTokenOnce.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-
-        AllToken = [responseObject objectForKey:@"MyToken"];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+       
+        NSLog(@"Success: %@", operation.responseString);
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        
+        AllToken = [resultDic objectForKey:@"MyToken"];
         
         
         NSData *imageData = UIImagePNGRepresentation(self.willUploadImage);
@@ -169,11 +176,11 @@
         [self UploadImg: imageData:AllToken:entity];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
+        NSLog(@"Failure: %@", error);
     }];
-    
+    [operation start];
 }
+
     //上传图片并保存日记
 -(void) UploadImg:(NSData *) uploaddata: (NSString *) token: (DailyOne *) entity
 {
@@ -322,7 +329,7 @@
 // Upload failed.
 - (void)uploadFailed:(NSString *)filePath error:(NSError *)error
 {
-    //NSLog(error.description);
+     NSLog(error.description);
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

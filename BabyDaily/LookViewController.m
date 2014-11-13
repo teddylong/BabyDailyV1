@@ -114,20 +114,24 @@
 
 - (void)LoadDailys
 {
-    [_array removeAllObjects];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    [manager GET:@"http://teddylong.net/BabyDaily/PostEntity.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-
-        NSArray * data = responseObject;
+    NSURL *url = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/PostEntity.php"];
+    
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+        NSLog(@"Success: %@", operation.responseString);
         
-        for(int i=0;i<data.count;i++)
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        NSArray *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        
+        for(int i=0;i<resultDic.count;i++)
         {
-            NSDictionary *dailyDetail = [data objectAtIndex:i];
+            NSDictionary *dailyDetail = [resultDic objectAtIndex:i];
             //NSLog([dailyDetail valueForKey:[NSString stringWithFormat:@"ID"]]);
             DailyOne *daily = [[DailyOne alloc]init];
             daily.Body = [dailyDetail valueForKey:[NSString stringWithFormat:@"Body"]];
@@ -144,15 +148,15 @@
             [_array addObject:daily];
             
         }
+        
         [self.tableView reloadData];
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
-    }];
-
+     
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Failure: %@", error);
+     }];
+    [operation start];
 }
+
 
 - (void)headerRereshing
 {

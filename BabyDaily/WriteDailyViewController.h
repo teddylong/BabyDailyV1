@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WriteDailyViewController : UIViewController
+@interface WriteDailyViewController : UIViewController<NSURLConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *DText;
 @property (weak, nonatomic) IBOutlet UIButton *AddImgBtn;
 - (IBAction)AddImg:(id)sender;
