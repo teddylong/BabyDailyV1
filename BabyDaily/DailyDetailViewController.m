@@ -76,16 +76,16 @@
    
     
     //加载Small View
-    UIView *smallView = [self.view viewWithTag:200];
+    SmallView = (UIView*)[self.view viewWithTag:200];
     
     CGRect smallViewFrame = CGRectMake(0, BigImage.frame.size.height, 320, 60);
-    smallView.frame = smallViewFrame;
+    SmallView.frame = smallViewFrame;
     
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    UILabel *dateLabel = (UILabel *)[smallView viewWithTag:201];
+    UILabel *dateLabel = (UILabel *)[SmallView viewWithTag:201];
     dateLabel.text = [dateFormatter stringFromDate:daily.CreateDate];
     
     if(dateLabel.text == (NSString*)nil)
@@ -105,23 +105,23 @@
         dateLabel.text = [dateFormatter stringFromDate:localeDate];
     }
     
-    UILabel *tempLabel = (UILabel *)[smallView viewWithTag:203];
+    UILabel *tempLabel = (UILabel *)[SmallView viewWithTag:203];
     tempLabel.text = daily.Weather;
     
-    UILabel *locationLabel = (UILabel *)[smallView viewWithTag:204];
+    UILabel *locationLabel = (UILabel *)[SmallView viewWithTag:204];
     locationLabel.text = daily.Location;
     
     if([tempLabel.text isEqual: @""] || [locationLabel.text isEqual: @""])
     {
         CGRect smallViewFrame = CGRectMake(0, BigImage.frame.size.height, 320, 30);
-        smallView.frame = smallViewFrame;
+        SmallView.frame = smallViewFrame;
     }
     
     
     
     
     //加载Body详细
-    BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + smallView.frame.size.height + 10, 320.0f, 200.0f)];
+    BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + SmallView.frame.size.height + 10, 320.0f, 200.0f)];
     BigText.text = daily.Body;
     
     double height = 0.0;
@@ -139,15 +139,15 @@
     
     [scrollView addSubview:BigImage];
     
-    [scrollView addSubview:smallView];
+    [scrollView addSubview:SmallView];
 
     [scrollView addSubview:BigText];
     
     
-    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height + smallView.frame.size.height, 320.0f, height + 50.0f)];
+    [BigText setFrame:CGRectMake(0.0f, BigImage.frame.size.height + SmallView.frame.size.height, 320.0f, height + 50.0f)];
     BigText.scrollEnabled = NO;
     
-    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height + smallView.frame.size.height + 50.0f);
+    CGSize newSize = CGSizeMake(self.view.frame.size.width, BigImage.frame.size.height + BigText.frame.size.height + SmallView.frame.size.height + 50.0f);
     
     if(newSize.height < 568.0)
     {

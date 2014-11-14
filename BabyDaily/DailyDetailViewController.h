@@ -16,6 +16,7 @@
     IBOutlet UIScrollView *scrollView;
     AsyncImageView *BigImage;
     UITextView *BigText;
+    UIView *SmallView;
 }
 
 @property (nonatomic, strong) DailyOne *daily;
