@@ -221,7 +221,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pes-py-ntn">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ING-xi-8dA"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ING-xi-8dA">
+                            <connections>
+                                <action selector="editDone:" destination="ac7-Hw-0jq" id="iZH-q8-GrB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="DailyBody" destination="IxR-3y-mMp" id="oIb-wt-P99"/>

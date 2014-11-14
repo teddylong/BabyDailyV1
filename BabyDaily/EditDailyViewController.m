@@ -9,6 +9,8 @@
 #import "EditDailyViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UzysAssetsPickerController.h"
+#import "DailyDetailViewController.h"
+#import <Realm/Realm.h>
 
 
 @interface EditDailyViewController () <UzysAssetsPickerControllerDelegate>
@@ -24,7 +26,7 @@
     // Do any additional setup after loading the view.
     
     [self.DailyBody becomeFirstResponder];
-    //self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     UITextView *textView = (UITextView *)[self.view viewWithTag:1];
     textView.text = daily.Body;
@@ -63,6 +65,37 @@
     }];
     
 }
+
+- (IBAction)editDone:(id)sender
+{
+    //NSLog(daily.Body);
+    
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    
+    
+
+    
+    
+    daily.Body = self.DailyBody.text;
+    //[daily createOrUpdateInRealm:realm withObject:daily];
+    
+    //[realm addOrUpdateObject:daily];
+    
+    [realm commitWriteTransaction];
+    
+    
+    //DailyDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DailyDetailViewController"];
+    DailyDetailViewController *detailViewController = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+    detailViewController.daily = daily;
+//    [detailViewController setHidesBottomBarWhenPushed:YES];
+    //[self.navigationController pushViewController:detailViewController animated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToViewController:detailViewController animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)UzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {

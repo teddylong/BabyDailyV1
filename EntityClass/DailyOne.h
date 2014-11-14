@@ -11,6 +11,7 @@
 
 @interface DailyOne : RLMObject
 
+
 @property NSString *ID;
 @property NSDate *CreateDate;
 @property NSString *User;
@@ -23,4 +24,5 @@
 @property NSString *UDID;
 //@property NSInteger *Publish;
 
++(NSString *) primaryKey;
 @end

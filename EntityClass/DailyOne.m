@@ -10,4 +10,9 @@
 
 @implementation DailyOne
 
+-(NSString *)primaryKey
+{
+    return self.ID;
+}
+
 @end

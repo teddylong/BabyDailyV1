@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[EditDailyViewController editDone:]:EditDailyViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "daily.Body">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DailyDetailViewController viewDidLoad]:DailyDetailViewController.m">
          <PersistentStrings>
             <PersistentString
