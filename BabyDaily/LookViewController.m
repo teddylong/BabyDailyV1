@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "DailyDetailViewController.h"
+#import "ProgressHUD.h"
 
 @interface LookViewController ()
 
@@ -34,6 +35,7 @@
     _array = [[NSMutableArray alloc]init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    [ProgressHUD show:@"Loading..."];
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     [self LoadDailys];
 
@@ -168,7 +170,7 @@
             [_array addObject:daily];
             
         }
-        
+        [ProgressHUD dismiss];
         [self.tableView reloadData];
      
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -181,6 +183,7 @@
 - (void)headerRereshing
 {
     _array = [[NSMutableArray alloc]init];
+    [ProgressHUD show:@"Loading..."];
     [self LoadDailys];
     [self.tableView headerEndRefreshing];
     

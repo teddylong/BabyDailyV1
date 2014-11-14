@@ -123,6 +123,7 @@
     //加载Body详细
     BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + SmallView.frame.size.height + 10, 320.0f, 200.0f)];
     BigText.text = daily.Body;
+    [BigText setFont:[UIFont fontWithName:@"Helvetica" size:15]];
     
     double height = 0.0;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {

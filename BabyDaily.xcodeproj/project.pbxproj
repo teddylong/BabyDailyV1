@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A32C619FB65210001DFCC /* TestViewController.m */; };
+		9F2EF5001A164A6A00E177DB /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F2EF4FD1A164A6A00E177DB /* ProgressHUD.bundle */; };
+		9F2EF5011A164A6A00E177DB /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2EF4FF1A164A6A00E177DB /* ProgressHUD.m */; };
 		9F2F763E1A139EA700E6A76C /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2F763D1A139EA700E6A76C /* SearchResultController.m */; };
 		9F2F76401A13A7A500E6A76C /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F2F763F1A13A7A500E6A76C /* TableCell.xib */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
-		9FBA0FE71A125D480032BD34 /* MyResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
 		D013B91319F8B4AE00DC5AA2 /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */; };
@@ -117,14 +118,15 @@
 /* Begin PBXFileReference section */
 		9F1A32C519FB65210001DFCC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		9F1A32C619FB65210001DFCC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		9F2EF4FD1A164A6A00E177DB /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		9F2EF4FE1A164A6A00E177DB /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		9F2EF4FF1A164A6A00E177DB /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		9F2F763C1A139EA700E6A76C /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
 		9F2F763D1A139EA700E6A76C /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
 		9F2F763F1A13A7A500E6A76C /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
-		9FBA0FE51A125D480032BD34 /* MyResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyResultTableViewController.h; sourceTree = "<group>"; };
-		9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyResultTableViewController.m; sourceTree = "<group>"; };
 		9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		D00E0F4F19F1149E00BD072E /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
@@ -330,6 +332,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F2EF4FC1A164A6A00E177DB /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9F2EF4FD1A164A6A00E177DB /* ProgressHUD.bundle */,
+				9F2EF4FE1A164A6A00E177DB /* ProgressHUD.h */,
+				9F2EF4FF1A164A6A00E177DB /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		9FFD96F719F142EF004D5AF2 /* AsyncImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +579,7 @@
 		D09130E619EBDAEF0086C423 = {
 			isa = PBXGroup;
 			children = (
+				9F2EF4FC1A164A6A00E177DB /* ProgressHUD */,
 				D013B90E19F8B48B00DC5AA2 /* ASProgressPopUpView */,
 				D054E1EC19F7975200CB95F8 /* SDWebImage */,
 				9F5FD35C19F54BC500274E6A /* MapKit.framework */,
@@ -615,8 +628,6 @@
 				9F1A32C619FB65210001DFCC /* TestViewController.m */,
 				D099709C19FF2C07005030EC /* LookViewController.h */,
 				D099709D19FF2C07005030EC /* LookViewController.m */,
-				9FBA0FE51A125D480032BD34 /* MyResultTableViewController.h */,
-				9FBA0FE61A125D480032BD34 /* MyResultTableViewController.m */,
 				9F2F763C1A139EA700E6A76C /* SearchResultController.h */,
 				9F2F763D1A139EA700E6A76C /* SearchResultController.m */,
 				9F2F763F1A13A7A500E6A76C /* TableCell.xib */,
@@ -791,6 +802,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F2EF5001A164A6A00E177DB /* ProgressHUD.bundle in Resources */,
 				D091310119EBDAEF0086C423 /* Main.storyboard in Resources */,
 				D091310619EBDAEF0086C423 /* LaunchScreen.xib in Resources */,
 				D05C1E6319F4C63F005F6504 /* MJRefresh.bundle in Resources */,
@@ -872,7 +884,6 @@
 				D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */,
 				D07144A019ECED05001AD540 /* UzysWrapperPickerController.m in Sources */,
 				D06B453519F0F3E300D1FE72 /* QNEtag.m in Sources */,
-				9FBA0FE71A125D480032BD34 /* MyResultTableViewController.m in Sources */,
 				D06B453719F0F3E300D1FE72 /* QNHttpManager.m in Sources */,
 				D05C1E6A19F4C63F005F6504 /* UIView+MJExtension.m in Sources */,
 				D09130F519EBDAEF0086C423 /* main.m in Sources */,
@@ -881,6 +892,7 @@
 				D01C8FCF1A1461820046A5A5 /* EditDailyViewController.m in Sources */,
 				D071449919ECED05001AD540 /* UzysAppearanceConfig.m in Sources */,
 				D071449F19ECED05001AD540 /* UzysGroupViewCell.m in Sources */,
+				9F2EF5011A164A6A00E177DB /* ProgressHUD.m in Sources */,
 				D0FD5BF519EE679C0068FE00 /* AFSecurityPolicy.m in Sources */,
 				D0FD5C0019EE679C0068FE00 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D06B453A19F0F3E300D1FE72 /* QNFileRecorder.m in Sources */,

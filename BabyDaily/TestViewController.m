@@ -9,7 +9,6 @@
 #import "TestViewController.h"
 #import <Realm/Realm.h>
 #import "DailyOne.h"
-#import "MyResultTableViewController.h"
 
 @interface TestViewController ()
 
@@ -38,20 +37,6 @@
     self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
         [weakSelf reloadData];
     }];
-    
-    
-      
-    MyResultTableViewController *resultsController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"MyResultTableViewController"];
-    self.myUISearchDisplayController = [[UISearchController alloc]initWithSearchResultsController:resultsController];
-    self.myUISearchDisplayController.searchResultsUpdater = resultsController;
-    
-    UISearchBar* bar = self.myUISearchDisplayController.searchBar;
-    [bar sizeToFit];
-    self.tableView.tableHeaderView = self.myUISearchDisplayController.searchBar;
-    self.definesPresentationContext = YES;
-
-    
-    [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
     
     [self reloadData];
 
