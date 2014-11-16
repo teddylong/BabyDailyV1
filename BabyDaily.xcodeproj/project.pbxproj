@@ -10,6 +10,7 @@
 		9F1A32C719FB65210001DFCC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A32C619FB65210001DFCC /* TestViewController.m */; };
 		9F2EF5001A164A6A00E177DB /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F2EF4FD1A164A6A00E177DB /* ProgressHUD.bundle */; };
 		9F2EF5011A164A6A00E177DB /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2EF4FF1A164A6A00E177DB /* ProgressHUD.m */; };
+		9F2EF5041A17183E00E177DB /* TestV2ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2EF5031A17183E00E177DB /* TestV2ControllerViewController.m */; };
 		9F2F763E1A139EA700E6A76C /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2F763D1A139EA700E6A76C /* SearchResultController.m */; };
 		9F2F76401A13A7A500E6A76C /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F2F763F1A13A7A500E6A76C /* TableCell.xib */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
@@ -121,6 +122,8 @@
 		9F2EF4FD1A164A6A00E177DB /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		9F2EF4FE1A164A6A00E177DB /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		9F2EF4FF1A164A6A00E177DB /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		9F2EF5021A17183E00E177DB /* TestV2ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestV2ControllerViewController.h; sourceTree = "<group>"; };
+		9F2EF5031A17183E00E177DB /* TestV2ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestV2ControllerViewController.m; sourceTree = "<group>"; };
 		9F2F763C1A139EA700E6A76C /* SearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultController.h; sourceTree = "<group>"; };
 		9F2F763D1A139EA700E6A76C /* SearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultController.m; sourceTree = "<group>"; };
 		9F2F763F1A13A7A500E6A76C /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
@@ -633,6 +636,8 @@
 				9F2F763F1A13A7A500E6A76C /* TableCell.xib */,
 				D01C8FCD1A1461820046A5A5 /* EditDailyViewController.h */,
 				D01C8FCE1A1461820046A5A5 /* EditDailyViewController.m */,
+				9F2EF5021A17183E00E177DB /* TestV2ControllerViewController.h */,
+				9F2EF5031A17183E00E177DB /* TestV2ControllerViewController.m */,
 			);
 			path = BabyDaily;
 			sourceTree = "<group>";
@@ -879,6 +884,7 @@
 				D054E21219F7976E00CB95F8 /* SDWebImageDecoder.m in Sources */,
 				D06B453C19F0F3E300D1FE72 /* QNUploadManager.m in Sources */,
 				D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */,
+				9F2EF5041A17183E00E177DB /* TestV2ControllerViewController.m in Sources */,
 				D054E21119F7976E00CB95F8 /* SDWebImageCompat.m in Sources */,
 				D0FD5BC919EE2AC80068FE00 /* DailyDetailViewController.m in Sources */,
 				D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */,

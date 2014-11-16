@@ -10,6 +10,7 @@
 #import "DailyOne.h"
 //#import "PAImageView.h"
 #import "AsyncImageView.h"
+#import <Realm/Realm.h>
 
 @interface DailyDetailViewController : UIViewController
 {
@@ -20,5 +21,5 @@
 }
 
 @property (nonatomic, strong) DailyOne *daily;
-
+@property (nonatomic,strong) RLMNotificationToken *notification;
 @end

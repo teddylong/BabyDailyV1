@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UISearchController *myUISearchDisplayController;
+@property (weak, nonatomic) IBOutlet UILabel *DataLabel;
+
 
 @end

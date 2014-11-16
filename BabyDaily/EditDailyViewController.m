@@ -21,9 +21,14 @@
 
 @synthesize daily;
 
+BOOL *isUpdateImage;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
+    isUpdateImage = NO;
     
     [self.DailyBody becomeFirstResponder];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -68,21 +73,12 @@
 
 - (IBAction)editDone:(id)sender
 {
-    //NSLog(daily.Body);
-    
-    
     RLMRealm *realm = [RLMRealm defaultRealm];
+    
     [realm beginWriteTransaction];
     
-    
-
-    
-    
     daily.Body = self.DailyBody.text;
-    //[daily createOrUpdateInRealm:realm withObject:daily];
-    
-    //[realm addOrUpdateObject:daily];
-    
+
     [realm commitWriteTransaction];
     
     
@@ -92,8 +88,8 @@
 //    [detailViewController setHidesBottomBarWhenPushed:YES];
     //[self.navigationController pushViewController:detailViewController animated:YES];
     //[self.navigationController popToRootViewControllerAnimated:YES];
-    //[self.navigationController popToViewController:detailViewController animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToViewController:detailViewController animated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 

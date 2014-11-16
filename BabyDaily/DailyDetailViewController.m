@@ -19,7 +19,6 @@
 @synthesize daily;
 
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,7 +46,26 @@
 {
     [super viewDidLoad];
     
+    
+    // Set realm notification block
+    __weak typeof(self) weakSelf = self;
+    
+    
+    
+    self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
+        [realm refresh];
+        realm.autorefresh = YES;
+        [self ProcessPage];
+        
+    }];
 
+    [self ProcessPage];
+    
+    
+}
+
+-(void)ProcessPage
+{
     //加载Scroll VIew
     scrollView = (UIScrollView *)[self.view viewWithTag:99];
     
@@ -73,7 +91,7 @@
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
         BigImage.imageURL = [[NSURL alloc] initWithString:daily.Image];
     }
-   
+    
     
     //加载Small View
     SmallView = (UIView*)[self.view viewWithTag:200];
@@ -90,7 +108,6 @@
     
     if(dateLabel.text == (NSString*)nil)
     {
-        //dateLabel.text = (NSString*)daily.CreateDate;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         
@@ -101,7 +118,7 @@
         NSTimeZone *zone = [NSTimeZone systemTimeZone];
         NSInteger interval = [zone secondsFromGMTForDate: now3];
         NSDate *localeDate = [now3 dateByAddingTimeInterval: interval];
-    
+        
         dateLabel.text = [dateFormatter stringFromDate:localeDate];
     }
     
@@ -116,9 +133,43 @@
         CGRect smallViewFrame = CGRectMake(0, BigImage.frame.size.height, 320, 30);
         SmallView.frame = smallViewFrame;
     }
-    
-    
-    
+    else
+    {
+        UIImageView* weatherImage = (UIImageView *)[SmallView viewWithTag:210];
+        
+        if([tempLabel.text containsString:@"mist"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Fog"];
+        }
+        else if ([tempLabel.text containsString:@"Clear"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Sun"];
+        }
+        else if ([tempLabel.text containsString:@"rain"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Rain"];
+        }
+        else if ([tempLabel.text containsString:@"clouds"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Clouds"];
+        }
+        else if ([tempLabel.text containsString:@"hail"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Hail"];
+        }
+        else if ([tempLabel.text containsString:@"thunderstorm"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Storm"];
+        }
+        else if ([tempLabel.text containsString:@"snow"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Snow"];
+        }
+        else if ([tempLabel.text containsString:@"haze"])
+        {
+            weatherImage.image =  [UIImage imageNamed:@"Fog"];
+        }
+    }
     
     //加载Body详细
     BigText = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, BigImage.frame.size.height + SmallView.frame.size.height + 10, 320.0f, 200.0f)];
@@ -141,7 +192,7 @@
     [scrollView addSubview:BigImage];
     
     [scrollView addSubview:SmallView];
-
+    
     [scrollView addSubview:BigText];
     
     
@@ -157,7 +208,6 @@
     
     [scrollView setContentSize:newSize];
 
-    
 }
 
 
