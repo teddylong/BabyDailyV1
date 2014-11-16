@@ -225,6 +225,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pes-py-ntn">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="DNi-Lh-HhW">
+                            <connections>
+                                <action selector="BackToRoot:" destination="ac7-Hw-0jq" id="WFO-jb-l3b"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ING-xi-8dA">
                             <connections>
                                 <action selector="editDone:" destination="ac7-Hw-0jq" id="iZH-q8-GrB"/>

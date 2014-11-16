@@ -20,5 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *changImgBtn;
 @property (weak, nonatomic) IBOutlet UITextView *DailyBody;
 @property (weak, nonatomic) IBOutlet UIImageView *dailyImage;
+@property(nonatomic, weak) NSString *AllToken;
+
+- (IBAction)BackToRoot:(id)sender;
 
 @end

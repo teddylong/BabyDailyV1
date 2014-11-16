@@ -175,6 +175,8 @@
      
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Failure: %@", error);
+         [ProgressHUD showError:@"Failed"];
+         
      }];
     [operation start];
 }
