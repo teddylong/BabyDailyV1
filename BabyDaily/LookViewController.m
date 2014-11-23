@@ -63,10 +63,6 @@
     
     detailViewController.daily = selectedDaily;
     
-    
-    //    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editDaily)];
-    //
-    //
     detailViewController.navigationItem.rightBarButtonItem = nil;
     
     [detailViewController setHidesBottomBarWhenPushed:YES];
@@ -112,6 +108,10 @@
 
         dailyDateLabel.text = realLocalDate;
         //dailyDateLabel.text = dailyDateString;
+        
+        UILabel *dailyUserLabel =(UILabel *)[cell.contentView viewWithTag:7];
+        dailyUserLabel.text = daily.User;
+
         
         
         UIImageView *viewImage = (UIImageView *)[cell.contentView viewWithTag:100];

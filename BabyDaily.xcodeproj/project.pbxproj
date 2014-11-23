@@ -15,6 +15,7 @@
 		9F2F76401A13A7A500E6A76C /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F2F763F1A13A7A500E6A76C /* TableCell.xib */; };
 		9F5FD35D19F54BC500274E6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5FD35C19F54BC500274E6A /* MapKit.framework */; };
 		9F993D8019EC1BC20030310C /* WriteDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */; };
+		9FE9449F1A1EF9200038B8AF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9449E1A1EF9200038B8AF /* User.m */; };
 		9FFD96FA19F1431E004D5AF2 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */; };
 		D00E0F5119F1149E00BD072E /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E0F5019F1149E00BD072E /* PAImageView.m */; };
 		D013B91319F8B4AE00DC5AA2 /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D013B91019F8B4AE00DC5AA2 /* ASPopUpView.m */; };
@@ -130,6 +131,8 @@
 		9F5FD35C19F54BC500274E6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F993D7E19EC1BC20030310C /* WriteDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteDailyViewController.h; sourceTree = "<group>"; };
 		9F993D7F19EC1BC20030310C /* WriteDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteDailyViewController.m; sourceTree = "<group>"; };
+		9FE9449D1A1EF9200038B8AF /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		9FE9449E1A1EF9200038B8AF /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		9FFD96F819F1431E004D5AF2 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		9FFD96F919F1431E004D5AF2 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		D00E0F4F19F1149E00BD072E /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
@@ -562,6 +565,8 @@
 		D07144A419ECFF5D001AD540 /* EntityClass */ = {
 			isa = PBXGroup;
 			children = (
+				9FE9449D1A1EF9200038B8AF /* User.h */,
+				9FE9449E1A1EF9200038B8AF /* User.m */,
 				D07144A519ECFF9B001AD540 /* Daily.h */,
 				D07144A619ECFF9B001AD540 /* Daily.m */,
 				D027E9B119ED29D0007A3EB9 /* DailyOne.h */,
@@ -776,6 +781,7 @@
 				TargetAttributes = {
 					D09130EE19EBDAEF0086C423 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 5TMMB93VEL;
 					};
 					D091310A19EBDAEF0086C423 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -887,6 +893,7 @@
 				9F2EF5041A17183E00E177DB /* TestV2ControllerViewController.m in Sources */,
 				D054E21119F7976E00CB95F8 /* SDWebImageCompat.m in Sources */,
 				D0FD5BC919EE2AC80068FE00 /* DailyDetailViewController.m in Sources */,
+				9FE9449F1A1EF9200038B8AF /* User.m in Sources */,
 				D071449819ECED05001AD540 /* UIImage+UzysExtension.m in Sources */,
 				D07144A019ECED05001AD540 /* UzysWrapperPickerController.m in Sources */,
 				D06B453519F0F3E300D1FE72 /* QNEtag.m in Sources */,
@@ -1037,6 +1044,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1046,6 +1055,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1053,6 +1063,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1062,6 +1074,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

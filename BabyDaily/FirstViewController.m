@@ -15,6 +15,8 @@
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import "SearchResultController.h"
+#import "TestV2ControllerViewController.h"
+#import "User.h"
 
 static NSString * const kCellID    = @"cell";
 static NSString * const kTableName = @"table";
@@ -40,6 +42,20 @@ static NSString * const kTableName = @"table";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Check User
+    RLMArray *user = [User allObjects];
+    if(user.count >0)
+    {
+        NSLog([[user objectAtIndex:0] UserName]);
+    }
+    else
+    {
+        TestV2ControllerViewController *regUser = [self.storyboard instantiateViewControllerWithIdentifier:@"TestV2ControllerViewController"];
+    
+        [self presentViewController:regUser animated:YES
+                         completion:nil];
+    }
     
     // Search SetUp
     _resultsTableController = [[SearchResultController alloc] init];

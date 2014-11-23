@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UISearchController *myUISearchDisplayController;
 @property (weak, nonatomic) IBOutlet UILabel *DataLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *DataImage;
 
 
 @end

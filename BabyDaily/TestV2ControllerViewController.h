@@ -11,7 +11,6 @@
 @interface TestV2ControllerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 
-
--(IBAction)editDone:(id)sender;
+- (IBAction)editDone:(id)sender;
 
 @end

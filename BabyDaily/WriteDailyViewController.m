@@ -18,6 +18,7 @@
 #import "ASProgressPopUpView.h"
 #import "QiniuSimpleUploader.h"
 #import "ProgressHUD.h"
+#import "User.h"
 
 
 @interface WriteDailyViewController () <UzysAssetsPickerControllerDelegate,CLLocationManagerDelegate,QiniuUploadDelegate>
@@ -113,8 +114,14 @@
 //保存日记
 - (IBAction)SaveDaily:(id)sender {
     
-    //占位，User待定
-    _daily.User = @"Teddy";
+    //获取user信息
+    RLMArray *user = [User allObjects];
+    if(user.count >0)
+    {
+        _daily.User = [[user objectAtIndex:0] UserName];
+    }
+    
+    //ID 占位
     _daily.ID = @"1";
     
     //设置保存时间信息
