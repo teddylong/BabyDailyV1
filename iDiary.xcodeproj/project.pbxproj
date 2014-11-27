@@ -85,7 +85,7 @@
 		D091310119EBDAEF0086C423 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09130FF19EBDAEF0086C423 /* Main.storyboard */; };
 		D091310319EBDAEF0086C423 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091310219EBDAEF0086C423 /* Images.xcassets */; };
 		D091310619EBDAEF0086C423 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D091310419EBDAEF0086C423 /* LaunchScreen.xib */; };
-		D091311219EBDAEF0086C423 /* BabyDailyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091311119EBDAEF0086C423 /* BabyDailyTests.m */; };
+		D091311219EBDAEF0086C423 /* iDiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D091311119EBDAEF0086C423 /* iDiaryTests.m */; };
 		D099709E19FF2C07005030EC /* LookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D099709D19FF2C07005030EC /* LookViewController.m */; };
 		D0FD5BC919EE2AC80068FE00 /* DailyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FD5BC819EE2AC80068FE00 /* DailyDetailViewController.m */; };
 		D0FD5BF119EE679C0068FE00 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FD5BCD19EE679C0068FE00 /* AFHTTPRequestOperation.m */; };
@@ -113,7 +113,7 @@
 			containerPortal = D09130E719EBDAEF0086C423 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D09130EE19EBDAEF0086C423;
-			remoteInfo = BabyDaily;
+			remoteInfo = iDiary;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -259,7 +259,7 @@
 		D07144A619ECFF9B001AD540 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Daily.m; sourceTree = "<group>"; };
 		D07144AD19ED0083001AD540 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D07144B019ED00E5001AD540 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		D09130EF19EBDAEF0086C423 /* BabyDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09130EF19EBDAEF0086C423 /* iDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09130F319EBDAEF0086C423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09130F419EBDAEF0086C423 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D09130F619EBDAEF0086C423 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -271,9 +271,9 @@
 		D091310019EBDAEF0086C423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D091310219EBDAEF0086C423 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D091310519EBDAEF0086C423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D091310B19EBDAEF0086C423 /* BabyDailyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabyDailyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D091310B19EBDAEF0086C423 /* iDiary.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDiary.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D091311019EBDAEF0086C423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D091311119EBDAEF0086C423 /* BabyDailyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BabyDailyTests.m; sourceTree = "<group>"; };
+		D091311119EBDAEF0086C423 /* iDiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDiaryTests.m; sourceTree = "<group>"; };
 		D099709C19FF2C07005030EC /* LookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookViewController.h; sourceTree = "<group>"; };
 		D099709D19FF2C07005030EC /* LookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookViewController.m; sourceTree = "<group>"; };
 		D0FD5BC719EE2AC80068FE00 /* DailyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDetailViewController.h; sourceTree = "<group>"; };
@@ -600,8 +600,8 @@
 				D07144A819ECFFD1001AD540 /* Realm */,
 				D07144A419ECFF5D001AD540 /* EntityClass */,
 				D071448619ECECEF001AD540 /* ImagePicker */,
-				D09130F119EBDAEF0086C423 /* BabyDaily */,
-				D091310E19EBDAEF0086C423 /* BabyDailyTests */,
+				D09130F119EBDAEF0086C423 /* iDiary */,
+				D091310E19EBDAEF0086C423 /* iDiaryTests */,
 				D09130F019EBDAEF0086C423 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -609,13 +609,13 @@
 		D09130F019EBDAEF0086C423 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D09130EF19EBDAEF0086C423 /* BabyDaily.app */,
-				D091310B19EBDAEF0086C423 /* BabyDailyTests.xctest */,
+				D09130EF19EBDAEF0086C423 /* iDiary.app */,
+				D091310B19EBDAEF0086C423 /* iDiary.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D09130F119EBDAEF0086C423 /* BabyDaily */ = {
+		D09130F119EBDAEF0086C423 /* iDiary */ = {
 			isa = PBXGroup;
 			children = (
 				D09130F619EBDAEF0086C423 /* AppDelegate.h */,
@@ -644,7 +644,7 @@
 				9F2EF5021A17183E00E177DB /* TestV2ControllerViewController.h */,
 				9F2EF5031A17183E00E177DB /* TestV2ControllerViewController.m */,
 			);
-			path = BabyDaily;
+			path = iDiary;
 			sourceTree = "<group>";
 		};
 		D09130F219EBDAEF0086C423 /* Supporting Files */ = {
@@ -656,13 +656,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D091310E19EBDAEF0086C423 /* BabyDailyTests */ = {
+		D091310E19EBDAEF0086C423 /* iDiaryTests */ = {
 			isa = PBXGroup;
 			children = (
-				D091311119EBDAEF0086C423 /* BabyDailyTests.m */,
+				D091311119EBDAEF0086C423 /* iDiaryTests.m */,
 				D091310F19EBDAEF0086C423 /* Supporting Files */,
 			);
-			path = BabyDailyTests;
+			name = iDiaryTests;
+			path = iDiaryTests;
 			sourceTree = "<group>";
 		};
 		D091310F19EBDAEF0086C423 /* Supporting Files */ = {
@@ -735,9 +736,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D09130EE19EBDAEF0086C423 /* BabyDaily */ = {
+		D09130EE19EBDAEF0086C423 /* iDiary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D091311519EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "BabyDaily" */;
+			buildConfigurationList = D091311519EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "iDiary" */;
 			buildPhases = (
 				D09130EB19EBDAEF0086C423 /* Sources */,
 				D09130EC19EBDAEF0086C423 /* Frameworks */,
@@ -747,14 +748,14 @@
 			);
 			dependencies = (
 			);
-			name = BabyDaily;
-			productName = BabyDaily;
-			productReference = D09130EF19EBDAEF0086C423 /* BabyDaily.app */;
+			name = iDiary;
+			productName = iDiary;
+			productReference = D09130EF19EBDAEF0086C423 /* iDiary.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D091310A19EBDAEF0086C423 /* BabyDailyTests */ = {
+		D091310A19EBDAEF0086C423 /* iDiaryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D091311819EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "BabyDailyTests" */;
+			buildConfigurationList = D091311819EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "iDiaryTests" */;
 			buildPhases = (
 				D091310719EBDAEF0086C423 /* Sources */,
 				D091310819EBDAEF0086C423 /* Frameworks */,
@@ -765,9 +766,9 @@
 			dependencies = (
 				D091310D19EBDAEF0086C423 /* PBXTargetDependency */,
 			);
-			name = BabyDailyTests;
-			productName = BabyDailyTests;
-			productReference = D091310B19EBDAEF0086C423 /* BabyDailyTests.xctest */;
+			name = iDiaryTests;
+			productName = iDiaryTests;
+			productReference = D091310B19EBDAEF0086C423 /* iDiary.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -789,7 +790,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D09130EA19EBDAEF0086C423 /* Build configuration list for PBXProject "BabyDaily" */;
+			buildConfigurationList = D09130EA19EBDAEF0086C423 /* Build configuration list for PBXProject "iDiary" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -802,8 +803,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D09130EE19EBDAEF0086C423 /* BabyDaily */,
-				D091310A19EBDAEF0086C423 /* BabyDailyTests */,
+				D09130EE19EBDAEF0086C423 /* iDiary */,
+				D091310A19EBDAEF0086C423 /* iDiaryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -930,7 +931,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091311219EBDAEF0086C423 /* BabyDailyTests.m in Sources */,
+				D091311219EBDAEF0086C423 /* iDiaryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,7 +940,7 @@
 /* Begin PBXTargetDependency section */
 		D091310D19EBDAEF0086C423 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D09130EE19EBDAEF0086C423 /* BabyDaily */;
+			target = D09130EE19EBDAEF0086C423 /* iDiary */;
 			targetProxy = D091310C19EBDAEF0086C423 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1051,10 +1052,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Realm",
 				);
-				INFOPLIST_FILE = BabyDaily/Info.plist;
+				INFOPLIST_FILE = iDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iDiary;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1070,10 +1071,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Realm",
 				);
-				INFOPLIST_FILE = BabyDaily/Info.plist;
+				INFOPLIST_FILE = iDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iDiary;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -1090,10 +1091,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BabyDailyTests/Info.plist;
+				INFOPLIST_FILE = iDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BabyDaily.app/BabyDaily";
+				PRODUCT_NAME = iDiary;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iDiary.app/iDiary";
 			};
 			name = Debug;
 		};
@@ -1105,17 +1106,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = BabyDailyTests/Info.plist;
+				INFOPLIST_FILE = iDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BabyDaily.app/BabyDaily";
+				PRODUCT_NAME = iDiary;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iDiary.app/iDiary";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D09130EA19EBDAEF0086C423 /* Build configuration list for PBXProject "BabyDaily" */ = {
+		D09130EA19EBDAEF0086C423 /* Build configuration list for PBXProject "iDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D091311319EBDAEF0086C423 /* Debug */,
@@ -1124,7 +1125,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D091311519EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "BabyDaily" */ = {
+		D091311519EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "iDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D091311619EBDAEF0086C423 /* Debug */,
@@ -1133,7 +1134,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D091311819EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "BabyDailyTests" */ = {
+		D091311819EBDAEF0086C423 /* Build configuration list for PBXNativeTarget "iDiaryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D091311919EBDAEF0086C423 /* Debug */,
