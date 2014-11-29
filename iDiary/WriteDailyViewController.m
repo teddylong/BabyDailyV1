@@ -1,6 +1,6 @@
 //
 //  WriteDailyViewController.m
-//  BabyDaily
+//  iDiary
 //
 //  Created by 龙 轶群 on 14-10-13.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
@@ -149,6 +149,7 @@
     //如果没有图片
     if( self.willUploadImage == nil)
     {
+        //图片字段为空
         _daily.Image = @"";
         
         //保存到数据库
@@ -165,17 +166,20 @@
             //上传到广场并回到主页
             [self PostDailyToWebServerAndBack:_daily];
         }
-        
+        else
+        {
+            //返回主页
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     }
     //有图片
     else
     {
         [self getToken:_daily];
     }
-    
-    
 }
-    //取得七牛空间Token
+
+//取得七牛空间Token
 - (void)getToken:(DailyOne *) entity
 {
     //Cancel以及Done按钮失效
@@ -222,7 +226,6 @@
     
     //开始上传图片
     [newUpLoader uploadFileData:uploaddata key:filename extra:nil];
-
 }
 
 //准备获取天气地理位置信息
@@ -320,8 +323,6 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-
-
 }
 
 //定位失败

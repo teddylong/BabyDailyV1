@@ -1,8 +1,8 @@
 //
 //  LookViewController.h
-//  BabyDaily
+//  iDiary
 //
-//  Created by Ctrip on 14/10/28.
+//  Created by 龙 轶群 on 14/10/28.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
 //
 

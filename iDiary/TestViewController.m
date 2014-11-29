@@ -1,6 +1,6 @@
 //
 //  TestViewController.m
-//  BabyDaily
+//  iDiary
 //
 //  Created by 龙 轶群 on 14-10-25.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.

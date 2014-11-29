@@ -1,19 +1,19 @@
 //
-//  TestV2ControllerViewController.m
-//  BabyDaily
+//  RegUserViewController.m
+//  iDiary
 //
 //  Created by 龙 轶群 on 14-11-15.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
 //
 
-#import "TestV2ControllerViewController.h"
+#import "RegUserViewController.h"
 #import "TestViewController.h"
 #import "User.h"
 #import <Realm/Realm.h>
 #import "PAImageView.h"
 #import "UzysAssetsPickerController.h"
 
-@interface TestV2ControllerViewController () <UzysAssetsPickerControllerDelegate>
+@interface RegUserViewController () <UzysAssetsPickerControllerDelegate>
 
 @property (nonatomic,strong)PAImageView *avatarView;
 @property (nonatomic,strong)UIImage *tempImage;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation TestV2ControllerViewController
+@implementation RegUserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

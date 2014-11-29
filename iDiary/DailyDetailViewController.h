@@ -1,8 +1,8 @@
 //
 //  DailyDetailViewController.h
-//  BabyDaily
+//  iDiary
 //
-//  Created by Ctrip on 14-10-15.
+//  Created by 龙 轶群 on 14-10-15.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
 //
 

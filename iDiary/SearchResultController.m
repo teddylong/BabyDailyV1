@@ -1,6 +1,6 @@
 //
 //  SearchResultController.m
-//  BabyDaily
+//  iDiary
 //
 //  Created by 龙 轶群 on 14-11-12.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.

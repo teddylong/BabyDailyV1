@@ -1,43 +1,42 @@
 //
 //  DailyDetailViewController.m
-//  BabyDaily
+//  iDiary
 //
-//  Created by Ctrip on 14-10-15.
+//  Created by 龙 轶群 on 14-10-15.
 //  Copyright (c) 2014年 Ctrip. All rights reserved.
 //
 
 
 #import "DailyDetailViewController.h"
-//#import "PAImageView.h"
 #import "AsyncImageView.h"
 #import "EditDailyViewController.h"
-
-
 
 @implementation DailyDetailViewController
 
 @synthesize daily;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
+//定义跳转以及传值
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //编辑跳转
     if([segue.identifier isEqualToString:@"goEdit"])
     {
+        //编辑页面初始化
         EditDailyViewController *editDaily = segue.destinationViewController;
         
+        //把待编辑日记传给编辑页面
         editDaily.daily = daily;
-        
     }
     
+    //跳转后隐藏底部状态栏
     [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 
@@ -46,52 +45,51 @@
 {
     [super viewDidLoad];
     
-    
-    // Set realm notification block
-    __weak typeof(self) weakSelf = self;
-    
-    
-    
+    //日记数据库发生变更，刷新数据
     self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
-        [realm refresh];
         realm.autorefresh = YES;
-        [self ProcessPage];
+        [realm refresh];
         
+        //展示页面
+        [self ProcessPage];
     }];
-
+    
+    //展示页面
     [self ProcessPage];
-    
-    
 }
 
+//展示页面主方法
 -(void)ProcessPage
 {
     //加载Scroll VIew
     scrollView = (UIScrollView *)[self.view viewWithTag:99];
     
-    //加载大图片
+    //加载大图片 （高320像素，宽320像素）
     BigImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     
+    //取消大图片的Loading
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
     
+    //图片填充方式
     BigImage.contentMode =UIViewContentModeScaleAspectFill;
     
+    //判断日记中是否有图片信息
     if([daily.Image isEqual:@""])
     {
+        //没有图片，则大图片的高度为0
         BigImage.image = nil;
-        
         CGRect frame = BigImage.frame;
         frame.size.height = 0;
-        
         BigImage.frame = frame;
         
     }
     else
     {
+        //有图片
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:BigImage];
+        //异步下载图片
         BigImage.imageURL = [[NSURL alloc] initWithString:daily.Image];
     }
-    
     
     //加载Small View
     SmallView = (UIView*)[self.view viewWithTag:200];
