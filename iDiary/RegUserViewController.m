@@ -18,7 +18,6 @@
 @property (nonatomic,strong)PAImageView *avatarView;
 @property (nonatomic,strong)UIImage *tempImage;
 
-
 @end
 
 @implementation RegUserViewController
@@ -40,13 +39,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 - (void) PAClicked:(UIGestureRecognizer *)gestureRecognizer
 {
-    //NSLog(@"asdasd");
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.delegate = self;
     picker.maximumNumberOfSelectionVideo = 0;
@@ -100,8 +97,8 @@
     TestViewController *detailViewController = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
     detailViewController.DataLabel.text = self.myTextField.text;
     
-    NSArray *getPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *getFilePath = [[getPaths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"UserImage.png"]];
+//    NSArray *getPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+//    NSString *getFilePath = [[getPaths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"UserImage.png"]];
     
     [self dismissViewControllerAnimated:YES completion:^{
     }];

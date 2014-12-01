@@ -11,7 +11,6 @@
 #import "UzysAssetsPickerController.h"
 #import "DailyDetailViewController.h"
 #import <Realm/Realm.h>
-
 #import "QiniuUploadDelegate.h"
 #import "ASPopUpView.h"
 #import "ASProgressPopUpView.h"
@@ -34,7 +33,6 @@ bool isUpdateImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     //初始设置
     isUpdateImage = NO;
