@@ -162,6 +162,7 @@
 		D01C8FCE1A1461820046A5A5 /* EditDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDailyViewController.m; sourceTree = "<group>"; };
 		D027E9B119ED29D0007A3EB9 /* DailyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyOne.h; sourceTree = "<group>"; };
 		D027E9B219ED29D0007A3EB9 /* DailyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyOne.m; sourceTree = "<group>"; };
+		D048F5451A2DB88D00313071 /* iDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iDiary.entitlements; sourceTree = "<group>"; };
 		D054E1ED19F7976E00CB95F8 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		D054E1EE19F7976E00CB95F8 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		D054E1EF19F7976E00CB95F8 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -618,6 +619,7 @@
 		D09130F119EBDAEF0086C423 /* iDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D048F5451A2DB88D00313071 /* iDiary.entitlements */,
 				D09130F619EBDAEF0086C423 /* AppDelegate.h */,
 				D09130F719EBDAEF0086C423 /* AppDelegate.m */,
 				D09130F919EBDAEF0086C423 /* FirstViewController.h */,
@@ -782,6 +784,11 @@
 					D09130EE19EBDAEF0086C423 = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = 5TMMB93VEL;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D091310A19EBDAEF0086C423 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -1044,6 +1051,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iDiary/iDiary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1063,6 +1071,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iDiary/iDiary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
