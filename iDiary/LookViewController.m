@@ -26,14 +26,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置Nav为白色以适应深色背景
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     //初始化广场列表
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     _array = [[NSMutableArray alloc]init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    //初始化Loading面板
-    [ProgressHUD show:@"Loading..."];
+    
+    
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
     //加载广场日记列表
@@ -141,6 +144,10 @@
 //获取广场日记主方法
 - (void)LoadDailys
 {
+    //初始化Loading面板，TabBar关闭
+    [ProgressHUD show:@"Loading..."];
+    [self disableTabBar];
+    
     //获取广场日记URL
     NSURL *url = [NSURL URLWithString:@"http://teddylong.net/BabyDaily/PostEntity.php"];
     
@@ -181,8 +188,9 @@
             [_array addObject:daily];
         }
         
-        //获取日记后，关闭Loading面板
+        //获取日记后，关闭Loading面板，TabBar开启
         [ProgressHUD dismiss];
+        [self enableTabBar];
         
         //刷新广场日记列表
         [self.tableView reloadData];
@@ -214,6 +222,32 @@
     
     //下拉完成
     [self.tableView headerEndRefreshing];
+}
+
+//禁用TabBar
+-(void)disableTabBar
+{
+    UITabBar *myTb=self.tabBarController.tabBar;
+    for(UITabBarItem *utb in myTb.items)
+    {
+        if( ![utb.title isEqualToString:@"随便看看"] )
+        {
+            utb.enabled=NO;
+        }
+        else {
+            utb.enabled=YES;
+        }
+    }
+}
+
+//启用TabBar
+-(void)enableTabBar
+{
+    UITabBar *myTb=self.tabBarController.tabBar;
+    for(UITabBarItem *utb in myTb.items)
+    {
+        utb.enabled=YES;
+    }
 }
 
 @end

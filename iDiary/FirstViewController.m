@@ -40,6 +40,9 @@ static NSString * const kTableName = @"table";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置Nav为白色以适应深色背景
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     //检查用户
     RLMArray *user = [User allObjects];
     if(user.count >0)
@@ -79,8 +82,13 @@ static NSString * const kTableName = @"table";
     _localPath = [[NSIndexPath alloc] init];
     
     //自定义导航栏中间图片
-    UIImage *logoImage = [UIImage imageNamed:@"Logo"];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    //UIImage *logoImage = [UIImage imageNamed:@"Logo"];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    
+    //UIView *navView = [[UIView alloc] init];
+    //navView.backgroundColor = [UIColor blackColor];
+    //self.navigationItem.titleView = navView;
+    //self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 
     //日记数据库发生变更，刷新数据
     __weak typeof(self) weakSelf = self;

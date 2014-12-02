@@ -34,6 +34,9 @@ bool isUpdateImage;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置Nav为白色以适应深色背景
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     //初始设置
     isUpdateImage = NO;
     

@@ -28,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //设置Nav为白色以适应深色背景
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     _sectionDaily = [[NSMutableDictionary alloc]init];

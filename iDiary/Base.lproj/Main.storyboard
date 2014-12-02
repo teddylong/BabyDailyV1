@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Baby Daily-->
+        <!--iDiary-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="TabHome" id="acW-dT-cKf"/>
-                    <navigationItem key="navigationItem" title="Baby Daily" id="P8L-LA-J54">
+                    <navigationItem key="navigationItem" title="iDiary" id="P8L-LA-J54">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="JaV-Og-8GU">
                             <connections>
                                 <segue destination="4Qj-E6-DSH" kind="push" id="XRb-EM-gi7"/>
@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="868" y="-326"/>
         </scene>
-        <!--Daily Detail View Controller-->
+        <!--Detail-->
         <scene sceneID="Xgd-24-ap9">
             <objects>
                 <viewController storyboardIdentifier="DailyDetailViewController" id="Kxp-st-fDe" customClass="DailyDetailViewController" sceneMemberID="viewController">
@@ -178,7 +178,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vhp-2J-KzA">
+                    <navigationItem key="navigationItem" title="Detail" id="Vhp-2J-KzA">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="ZPs-iM-mHF">
                             <connections>
                                 <segue destination="ac7-Hw-0jq" kind="push" identifier="goEdit" id="Cyl-gn-Kmc"/>
@@ -360,7 +360,7 @@
             </objects>
             <point key="canvasLocation" x="435" y="340"/>
         </scene>
-        <!--随便看看-->
+        <!--Square-->
         <scene sceneID="daJ-9L-3z6">
             <objects>
                 <viewController id="vdh-Ur-snF" customClass="LookViewController" sceneMemberID="viewController">
@@ -429,7 +429,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="随便看看" id="MDE-W7-LZ7"/>
+                    <navigationItem key="navigationItem" title="Square" id="MDE-W7-LZ7"/>
                     <connections>
                         <outlet property="tableView" destination="nsi-Rl-qGf" id="sR4-b1-ObJ"/>
                     </connections>

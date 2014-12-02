@@ -45,6 +45,9 @@
 {
     [super viewDidLoad];
     
+    //设置Nav为白色以适应深色背景
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     //日记数据库发生变更，刷新数据
     self.notification = [RLMRealm.defaultRealm addNotificationBlock:^(NSString *note, RLMRealm *realm) {
         realm.autorefresh = YES;
